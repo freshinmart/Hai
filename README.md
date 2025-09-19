@@ -1257,13 +1257,13 @@
 
         <div class="page" id="qrcodePage">
             <header>
-                <h1>Kode QRIS</h1>
+                <h1>QRIS</h1>
                 <p> </p>
                 <button class="profile-btn" id="qrcodeProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
             <div class="qrcode-display" id="qrcodeDisplay">
-                <p>Kode QRIS akan ditampilkan di sini</p>
+                <p>QRIS akan ditampilkan di sini</p>
             </div>
 
             <footer>
