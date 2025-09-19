@@ -1200,7 +1200,7 @@
             </div>
 
             <footer>
-                <p id="footerText">Dibuat dengan ❤️</p>
+                <p id="footerText"> </p>
             </footer>
         </div>
 
