@@ -1490,15 +1490,24 @@
         </div>
     </div>
 
+    <!-- Pulsa Modal -->
     <div class="pulsa-modal" id="pulsaModal">
         <div class="pulsa-content">
             <button class="close-btn" id="closePulsaModal"><i class="fas fa-times"></i></button>
+            <div class="pulsa-title">Pilih Nominal Pulsa</div>
             
             <div class="form-group">
                 <label for="phoneName">Nama Kontak</label>
                 <input type="text" id="phoneName" placeholder="Masukkan nama untuk nomor ini">
             </div>
-                
+            
+            <div class="pulsa-options">
+                <div class="pulsa-option" data-amount="?">
+                    <div class="pulsa-amount">?</div>
+                    <div class="pulsa-price">Rp ?</div>
+                </div>
+            </div>
+            
             <div class="form-group" id="customAmountGroup" style="display: none;">
                 <label for="customAmount">Nominal Custom</label>
                 <input type="number" id="customAmount" placeholder="Masukkan nominal pulsa">
