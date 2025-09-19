@@ -1258,7 +1258,7 @@
         <div class="page" id="qrcodePage">
             <header>
                 <h1>Kode QRIS</h1>
-                <p>Tampilkan Kode QRIS Statis Anda</p>
+                <p> </p>
                 <button class="profile-btn" id="qrcodeProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -1274,7 +1274,7 @@
         <div class="page" id="pulsaPage">
             <header>
                 <h1>Isi Pulsa</h1>
-                <p>Isi pulsa handphone dengan mudah</p>
+                <p>Isi pulsa</p>
                 <button class="profile-btn" id="pulsaProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -1292,11 +1292,12 @@
                     <button class="key" data-value="7">7</button>
                     <button class="key" data-value="8">8</button>
                     <button class="key" data-value="9">9</button>
-                    <button class="key" data-value="+62">+62</button>
+                    <button class="key" data-value="+628">+628</button>
+                    <button class="key" data-value="+08">+08</button>
                     <button class="key" data-value="0">0</button>
                     <button class="key" id="pulsaBackspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
-                
+              
                 <div class="action-buttons">
                     <button class="convert-button" id="savePhoneButton">Simpan</button>
                     <button class="clear-button" id="clearPhoneButton">Clear</button>
@@ -1571,6 +1572,8 @@
                     <option value="makanan">Makanan</option>
                     <option value="minuman">Minuman</option>
                     <option value="snack">Snack</option>
+                    <option value="obat">obat</option>
+                    <option value="alat">alat</option>
                     <option value="sembako">Sembako</option>
                     <option value="lainnya">Lainnya</option>
                 </select>
@@ -1693,7 +1696,7 @@
         let savedMerchant = localStorage.getItem('merchantName') || 'Merchant Anda';
         let savedHeaderTitle = localStorage.getItem('headerTitle') || 'Aplikasi QRIS';
         let savedHeaderSubtitle = localStorage.getItem('headerSubtitle') || 'Pembayaran menjadi mudah';
-        let savedFooterText = localStorage.getItem('footerText') || 'Dibuat dengan ❤️';
+        let savedFooterText = localStorage.getItem('footerText') || ' ';
         let savedQrisStaticCode = localStorage.getItem('qrisStaticCode') || '';
         let currentQrUrl = '';
         let phoneHistoryData = JSON.parse(localStorage.getItem('phoneHistory')) || [];
