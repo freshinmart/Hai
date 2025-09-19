@@ -1157,8 +1157,66 @@
                 height: 50px;
                 font-size: 1.3rem;
             }
+            
+    /* Mobile Full HD Optimization */
+    @media (max-width: 480px) {
+        .container {
+            max-width: 100%;
+            padding: 12px;
+            padding-bottom: 90px; /* Extra space for bottom nav */
         }
-    </style>
+        
+        header {
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+        }
+        
+        .input-section, .debt-form, .inventory-form {
+            padding: 15px;
+        }
+        
+        .amount-display, .phone-display {
+            font-size: 2rem;
+            min-height: 70px;
+            padding: 12px;
+        }
+        
+        .numeric-keypad {
+            gap: 8px;
+        }
+        
+        .key {
+            padding: 16px;
+            font-size: 1.3rem;
+        }
+        
+        /* ... dan seterusnya (seluruh kode yang diberikan sebelumnya) ... */
+    }
+    
+    /* Very small devices */
+    @media (max-width: 350px) {
+        .key {
+            padding: 14px;
+            font-size: 1.2rem;
+        }
+        
+        .amount-display, .phone-display {
+            font-size: 1.8rem;
+        }
+        
+        header h1 {
+            font-size: 1.3rem;
+        }
+        
+        .input-section h3 {
+            font-size: 1.1rem;
+        }
+    }
+</style>
 </head>
 <body>
     <div class="container">
