@@ -1,6 +1,15 @@
-<!DOCTYPE html>
+<html>
 <html lang="id">
 <head>
+  <title>Website Saya</title>
+
+  <style>
+    a {
+      text-decoration: none;  /* Perintah untuk menghilangkan garis bawah */
+      color: inherit;         /* Perintah untuk membuat warna link sama seperti teks di sekitarnya */
+    }
+  </style>
+</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qrisku</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
