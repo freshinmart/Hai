@@ -1,19 +1,9 @@
-<html>
+<!DOCTYPE html>
 <html lang="id">
-<head>
-  <title>Website Saya</title>
-
-  <style>
-    a {
-      text-decoration: none;  /* Perintah untuk menghilangkan garis bawah */
-      color: inherit;         /* Perintah untuk membuat warna link sama seperti teks di sekitarnya */
-    }
-  </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Qrisku</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -1165,11 +1155,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- Beranda Page -->
         <div class="page active" id="homePage">
             <header>
-                <h1 id="headerTitle"> </h1>
-                <p id="headerSubtitle"> </p>
+                <h1 id="headerTitle">Aplikasi QRIS</h1>
+                <p id="headerSubtitle">Pembayaran menjadi mudah</p>
                 <button class="profile-btn" id="profileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -1204,11 +1193,10 @@
             </div>
 
             <footer>
-                <p id="footerText"> </p>
+                <p id="footerText">Dibuat dengan ❤️</p>
             </footer>
         </div>
 
-        <!-- Keuangan Page -->
         <div class="page" id="financePage">
             <header>
                 <h1>Keuangan</h1>
@@ -1221,14 +1209,11 @@
                 <button class="finance-tab" data-tab="debts-tab">Hutang</button>
             </div>
 
-            <!-- Transactions Tab -->
             <div id="transactions-tab" class="tab-content active">
                 <div class="transaction-list" id="transactionList">
-                    <!-- Transaction items will be added here dynamically -->
-                </div>
+                    </div>
             </div>
 
-            <!-- Debts Tab -->
             <div id="debts-tab" class="tab-content">
                 <div class="debt-form">
                     <h3>Tambah Hutang Baru</h3>
@@ -1236,8 +1221,7 @@
                         <label for="debtName">Nama</label>
                         <input type="text" id="debtName" placeholder="Nama orang yang berhutang" list="debtNameList">
                         <datalist id="debtNameList">
-                            <!-- Options will be added dynamically -->
-                        </datalist>
+                            </datalist>
                     </div>
                     <div class="form-group">
                         <label for="debtPhone">Nomor Telepon</label>
@@ -1256,8 +1240,7 @@
 
                 <div class="debt-list" id="debtList">
                     <h3>Daftar Hutang</h3>
-                    <!-- Debt items will be added here dynamically -->
-                </div>
+                    </div>
             </div>
 
             <footer>
@@ -1265,16 +1248,14 @@
             </footer>
         </div>
 
-        <!-- Kode QRIS Page -->
         <div class="page" id="qrcodePage">
             <header>
                 <h1>Kode QRIS</h1>
-                <p> </p>
+                <p>Tampilkan Kode QRIS Statis Anda</p>
                 <button class="profile-btn" id="qrcodeProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
             <div class="qrcode-display" id="qrcodeDisplay">
-                <!-- QR code will be displayed here -->
                 <p>Kode QRIS akan ditampilkan di sini</p>
             </div>
 
@@ -1283,7 +1264,6 @@
             </footer>
         </div>
 
-        <!-- Pulsa Page -->
         <div class="page" id="pulsaPage">
             <header>
                 <h1>Isi Pulsa</h1>
@@ -1318,15 +1298,13 @@
 
             <div class="phone-history" id="phoneHistory">
                 <h3>Riwayat Nomor</h3>
-                <!-- Phone history items will be added here dynamically -->
-            </div>
+                </div>
 
             <footer>
                 <p> </p>
             </footer>
         </div>
 
-        <!-- Inventory Page -->
         <div class="page" id="inventoryPage">
             <header>
                 <h1>Manajemen Inventori</h1>
@@ -1363,13 +1341,11 @@
 
             <div class="inventory-list" id="inventoryList">
                 <h3>Daftar Inventori</h3>
-                <!-- Inventory items will be added here dynamically -->
-            </div>
+                </div>
 
             <div class="shopping-list" id="shoppingList">
                 <h3>Daftar Belanja</h3>
-                <!-- Shopping list items will be added here dynamically -->
-            </div>
+                </div>
 
             <footer>
                 <p> </p>
@@ -1377,7 +1353,6 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
     <div class="bottom-nav">
         <button class="nav-btn active" data-page="homePage"><i class="fas fa-home"></i><span>Beranda</span></button>
         <button class="nav-btn" data-page="financePage"><i class="fas fa-chart-line"></i><span>Keuangan</span></button>
@@ -1385,12 +1360,10 @@
         <button class="nav-btn" data-page="pulsaPage"><i class="fas fa-mobile-alt"></i><span>Pulsa</span></button>
     </div>
 
-    <!-- Inventory Button -->
     <button class="inventory-btn" id="inventoryButton" data-page="inventoryPage">
         <i class="fas fa-box"></i>
     </button>
 
-    <!-- Password Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-content">
             <h2>Masukkan Sandi</h2>
@@ -1401,7 +1374,6 @@
         </div>
     </div>
 
-    <!-- Settings Modal -->
     <div class="settings-modal" id="settingsModal">
         <div class="settings-content">
             <button class="close-btn" id="closeSettings"><i class="fas fa-times"></i></button>
@@ -1478,7 +1450,6 @@
         </div>
     </div>
 
-    <!-- Payment Modal -->
     <div class="payment-modal" id="paymentModal">
         <div class="payment-content">
             <div class="payment-header">
@@ -1504,14 +1475,12 @@
                     <span class="info-label">Transaction ID</span>
                     <span class="info-value" id="transactionId">TRX-789012</span>
                 </div>
-                <!-- Status item dihapus -->
-            </div>
+                </div>
             
             <button class="close-payment" id="closePayment">Tutup</button>
         </div>
     </div>
 
-    <!-- Pulsa Modal -->
     <div class="pulsa-modal" id="pulsaModal">
         <div class="pulsa-content">
             <button class="close-btn" id="closePulsaModal"><i class="fas fa-times"></i></button>
@@ -1558,7 +1527,6 @@
         </div>
     </div>
 
-    <!-- Debt Edit Modal -->
     <div class="debt-edit-modal" id="debtEditModal">
         <div class="debt-edit-content">
             <h2>Edit Hutang</h2>
@@ -1583,7 +1551,6 @@
         </div>
     </div>
 
-    <!-- Inventory Edit Modal -->
     <div class="inventory-edit-modal" id="inventoryEditModal">
         <div class="inventory-edit-content">
             <h2>Edit Barang</h2>
@@ -1716,10 +1683,10 @@
         let currentAmount = '0';
         let currentPhone = '0';
         let savedQrisImage = localStorage.getItem('qrisImage') || '';
-        let savedMerchant = localStorage.getItem('merchantName') || ' ';
-        let savedHeaderTitle = localStorage.getItem('headerTitle') || ' ';
-        let savedHeaderSubtitle = localStorage.getItem('headerSubtitle') || ' ';
-        let savedFooterText = localStorage.getItem('footerText') || ' ';
+        let savedMerchant = localStorage.getItem('merchantName') || 'Merchant Anda';
+        let savedHeaderTitle = localStorage.getItem('headerTitle') || 'Aplikasi QRIS';
+        let savedHeaderSubtitle = localStorage.getItem('headerSubtitle') || 'Pembayaran menjadi mudah';
+        let savedFooterText = localStorage.getItem('footerText') || 'Dibuat dengan ❤️';
         let savedQrisStaticCode = localStorage.getItem('qrisStaticCode') || '';
         let currentQrUrl = '';
         let phoneHistoryData = JSON.parse(localStorage.getItem('phoneHistory')) || [];
@@ -1848,10 +1815,10 @@
         
         // Render phone history
         function renderPhoneHistory() {
-            phoneHistory.innerHTML = '';
+            phoneHistory.innerHTML = '<h3>Riwayat Nomor</h3>';
             
             if (phoneHistoryData.length === 0) {
-                phoneHistory.innerHTML = '<p style="text-align: center; color: #8a93a6; padding: 10px;">Belum ada riwayat nomor handphone</p>';
+                phoneHistory.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 10px;">Belum ada riwayat nomor handphone</p>';
                 return;
             }
             
@@ -1907,10 +1874,10 @@
         
         // Render debts
         function renderDebts() {
-            debtList.innerHTML = '';
+            debtList.innerHTML = '<h3>Daftar Hutang</h3>';
             
             if (debts.length === 0) {
-                debtList.innerHTML = '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada catatan hutang</p>';
+                debtList.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada catatan hutang</p>';
                 return;
             }
             
@@ -2034,14 +2001,12 @@
             if (savedQrisImage) {
                 qrcodeDisplay.innerHTML = `
                     <h3>${savedMerchant}</h3>
-                    <p> </p>
                     <img src="${savedQrisImage}" alt="QRIS Code" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                     <p>Scan Kode QRIS di atas untuk pembayaran</p>
                 `;
             } else {
                 qrcodeDisplay.innerHTML = `
                     <h3>${savedMerchant}</h3>
-                    <p> </p>
                     <div style="background-color: #f0f0f0; padding: 20px; display: inline-block; margin: 15px 0;">
                         <i class="fas fa-qrcode" style="font-size: 150px; color: #4e73df;"></i>
                     </div>
@@ -2052,10 +2017,10 @@
         
         // Render inventory
         function renderInventory() {
-            inventoryList.innerHTML = '';
+            inventoryList.innerHTML = '<h3>Daftar Inventori</h3>';
             
             if (inventory.length === 0) {
-                inventoryList.innerHTML = '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada data inventori</p>';
+                inventoryList.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada data inventori</p>';
                 return;
             }
             
@@ -2064,8 +2029,8 @@
                 inventoryItem.className = 'inventory-item';
                 inventoryItem.dataset.id = item.id;
                 
-                const stockStatus = item.stock < item.minStock ? 'stock-warning' : 'stock-adequate';
-                const stockText = item.stock < item.minStock ? 'Stok Rendah!' : 'Stok Adekuat';
+                const stockStatus = item.stock <= item.minStock ? 'stock-warning' : 'stock-adequate';
+                const stockText = item.stock <= item.minStock ? 'Stok Rendah!' : 'Stok Cukup';
                 
                 inventoryItem.innerHTML = `
                     <button class="inventory-item-menu"><i class="fas fa-ellipsis-v"></i></button>
@@ -2174,16 +2139,14 @@
         
         // Render shopping list
         function renderShoppingList() {
-            shoppingList.innerHTML = '';
+            shoppingList.innerHTML = '<h3>Daftar Belanja</h3>';
             
             const lowStockItems = inventory.filter(item => item.stock < item.minStock);
             
             if (lowStockItems.length === 0) {
-                shoppingList.innerHTML = '<p style="text-align: center; color: #8a93a6; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
+                shoppingList.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
                 return;
             }
-            
-            shoppingList.innerHTML = '<h3>Daftar Belanja (Stok Rendah)</h3>';
             
             lowStockItems.forEach(item => {
                 const shoppingItem = document.createElement('div');
@@ -2363,7 +2326,7 @@
             key.addEventListener('click', () => {
                 const value = key.getAttribute('data-value');
                 
-                if (currentAmount === '0') {
+                if (currentAmount === '0' && value !== '000') {
                     currentAmount = value;
                 } else {
                     currentAmount += value;
@@ -2874,7 +2837,11 @@
         }
         
         function formatNumber(num) {
-            return parseInt(num).toLocaleString('id-ID');
+            // Ensure we handle the string '0' correctly
+            if (num === '0') return '0';
+            // Remove leading zeros before parsing, but allow a single '0'
+            const cleanedNum = num.replace(/^0+/, '') || '0';
+            return parseInt(cleanedNum).toLocaleString('id-ID');
         }
         
         // Initialize amount display and time
