@@ -9,7 +9,6 @@
       color: inherit;         /* Perintah untuk membuat warna link sama seperti teks di sekitarnya */
     }
   </style>
-
 </head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
