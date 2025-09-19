@@ -1184,6 +1184,7 @@
                     <button class="key" data-value="8">8</button>
                     <button class="key" data-value="9">9</button>
                     <button class="key" data-value="000">000</button>
+                    <button class="key" data-value="00">00</button>
                     <button class="key" data-value="0">0</button>
                     <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
@@ -1263,7 +1264,7 @@
             </header>
 
             <div class="qrcode-display" id="qrcodeDisplay">
-                <p>QRIS akan ditampilkan di sini</p>
+                <p>QRIS</p>
             </div>
 
             <footer>
@@ -1274,7 +1275,7 @@
         <div class="page" id="pulsaPage">
             <header>
                 <h1>Isi Pulsa</h1>
-                <p>Isi pulsa</p>
+                <p> </p>
                 <button class="profile-btn" id="pulsaProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -1293,7 +1294,7 @@
                     <button class="key" data-value="8">8</button>
                     <button class="key" data-value="9">9</button>
                     <button class="key" data-value="+628">+628</button>
-                    <button class="key" data-value="+08">+08</button>
+                    <button class="key" data-value="08">08</button>
                     <button class="key" data-value="0">0</button>
                     <button class="key" id="pulsaBackspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
@@ -1492,40 +1493,12 @@
     <div class="pulsa-modal" id="pulsaModal">
         <div class="pulsa-content">
             <button class="close-btn" id="closePulsaModal"><i class="fas fa-times"></i></button>
-            <div class="pulsa-title">Pilih Nominal Pulsa</div>
             
             <div class="form-group">
                 <label for="phoneName">Nama Kontak</label>
                 <input type="text" id="phoneName" placeholder="Masukkan nama untuk nomor ini">
             </div>
-            
-            <div class="pulsa-options">
-                <div class="pulsa-option" data-amount="5000">
-                    <div class="pulsa-amount">5.000</div>
-                    <div class="pulsa-price">Rp 5.000</div>
-                </div>
-                <div class="pulsa-option" data-amount="10000">
-                    <div class="pulsa-amount">10.000</div>
-                    <div class="pulsa-price">Rp 10.000</div>
-                </div>
-                <div class="pulsa-option" data-amount="20000">
-                    <div class="pulsa-amount">20.000</div>
-                    <div class="pulsa-price">Rp 20.000</div>
-                </div>
-                <div class="pulsa-option" data-amount="50000">
-                    <div class="pulsa-amount">50.000</div>
-                    <div class="pulsa-price">Rp 50.000</div>
-                </div>
-                <div class="pulsa-option" data-amount="100000">
-                    <div class="pulsa-amount">100.000</div>
-                    <div class="pulsa-price">Rp 100.000</div>
-                </div>
-                <div class="pulsa-option" data-amount="0">
-                    <div class="pulsa-amount">Lainnya</div>
-                    <div class="pulsa-price">Custom</div>
-                </div>
-            </div>
-            
+                
             <div class="form-group" id="customAmountGroup" style="display: none;">
                 <label for="customAmount">Nominal Custom</label>
                 <input type="number" id="customAmount" placeholder="Masukkan nominal pulsa">
