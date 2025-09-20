@@ -1344,7 +1344,6 @@
                     <button class="key" data-value="1">1</button>
                     <button class="key" data-value="2">2</button>
                     <button class="key" data-value="3">3</button>
-                    <button class="clear-button" id="clearPhoneButton">Clear</button>
                     <button class="key" data-value="4">4</button>
                     <button class="key" data-value="5">5</button>
                     <button class="key" data-value="6">6</button>
