@@ -1231,6 +1231,10 @@
                 <h3>Tambah nominal</h3>
                 <div class="amount-display" id="amountDisplay">0</div>
                 
+                <div class="action-buttons">
+                    <button class="clear-button" id="clearButton">Clear</button>
+                </div>
+                
                 <div class="numeric-keypad">
                     <button class="key" data-value="1">1</button>
                     <button class="key" data-value="2">2</button>
@@ -1248,7 +1252,6 @@
                 
                 <div class="action-buttons">
                     <button class="convert-button" id="convertButton">Terapkan</button>
-                    <button class="clear-button" id="clearButton">Clear</button>
                 </div>
                 
                 <div class="loading" id="loading">
