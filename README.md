@@ -1242,7 +1242,6 @@
                     <button class="key" data-value="8">8</button>
                     <button class="key" data-value="9">9</button>
                     <button class="key" data-value="000">000</button>
-                    <button class="key" data-value="00">00</button>
                     <button class="key" data-value="0">0</button>
                     <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
@@ -1345,13 +1344,13 @@
                     <button class="key" data-value="1">1</button>
                     <button class="key" data-value="2">2</button>
                     <button class="key" data-value="3">3</button>
+                    <button class="clear-button" id="clearPhoneButton">Clear</button>
                     <button class="key" data-value="4">4</button>
                     <button class="key" data-value="5">5</button>
                     <button class="key" data-value="6">6</button>
                     <button class="key" data-value="7">7</button>
                     <button class="key" data-value="8">8</button>
                     <button class="key" data-value="9">9</button>
-                    <button class="key" data-value="+628">+628</button>
                     <button class="key" data-value="08">08</button>
                     <button class="key" data-value="0">0</button>
                     <button class="key" id="pulsaBackspaceBtn"><i class="fas fa-backspace"></i></button>
