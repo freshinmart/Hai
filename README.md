@@ -1248,7 +1248,7 @@
                 
                 <div class="action-buttons">
                     <button class="convert-button" id="convertButton">Terapkan</button>
-                    <button class="clear-button" id="clearButton">Hapus</button>
+                    <button class="clear-button" id="clearButton">Delete</button>
                 </div>
                 
                 <div class="loading" id="loading">
@@ -1357,7 +1357,7 @@
               
                 <div class="action-buttons">
                     <button class="convert-button" id="savePhoneButton">Simpan</button>
-                    <button class="clear-button" id="clearPhoneButton">Hapus</button>
+                    <button class="clear-button" id="clearPhoneButton">Delete</button>
                 </div>
             </div>
 
