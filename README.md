@@ -1231,13 +1231,10 @@
                 <h3>Tambah nominal</h3>
                 <div class="amount-display" id="amountDisplay">0</div>
                 
-                <div class="action-buttons">
-                    <button class="clear-button" id="clearButton">Clear</button>
-                </div>
-                
                 <div class="numeric-keypad">
                     <button class="key" data-value="1">1</button>
                     <button class="key" data-value="2">2</button>
+                    <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
                     <button class="key" data-value="3">3</button>
                     <button class="key" data-value="4">4</button>
                     <button class="key" data-value="5">5</button>
@@ -1247,11 +1244,11 @@
                     <button class="key" data-value="9">9</button>
                     <button class="key" data-value="000">000</button>
                     <button class="key" data-value="0">0</button>
-                    <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
                 
                 <div class="action-buttons">
                     <button class="convert-button" id="convertButton">Terapkan</button>
+                    <button class="clear-button" id="clearButton">Clear</button>
                 </div>
                 
                 <div class="loading" id="loading">
