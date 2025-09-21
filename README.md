@@ -1,16 +1,10 @@
-<html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <title>Website Saya</title>
-  <style>
-    a {
-      text-decoration: none;  /* Perintah untuk menghilangkan garis bawah */
-      color: inherit;         /* Perintah untuk membuat warna link sama seperti teks di sekitarnya */
-    }
-  </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qrisku</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>QRISku - Pembayaran QRIS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -20,7 +14,7 @@
         }
 
         body {
-            background-color: #f9fafc;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
         }
@@ -36,7 +30,7 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 20px;
-            background: linear-gradient(135deg, #4e73df, #7a8eea);
+            background: linear-gradient(135deg, #333, #555);
             color: white;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -75,11 +69,12 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid #ddd;
         }
 
         .input-section h3 {
             margin-bottom: 15px;
-            color: #4e73df;
+            color: #333;
             font-size: 1.3rem;
             text-align: center;
         }
@@ -89,11 +84,11 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #f8f9fe;
+            background-color: #f8f9fc;
             border-radius: 10px;
-            border: 2px solid #e6e9f0;
+            border: 2px solid #e0e0e0;
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             min-height: 90px;
             display: flex;
             align-items: center;
@@ -110,8 +105,8 @@
         .key {
             padding: 18px;
             background-color: #fff;
-            color: #4e73df;
-            border: 1px solid #e6e9f0;
+            color: #333;
+            border: 1px solid #e0e0e0;
             border-radius: 10px;
             font-size: 1.5rem;
             font-weight: bold;
@@ -121,9 +116,9 @@
         }
 
         .key:hover {
-            background-color: #f0f4ff;
+            background-color: #f0f0f0;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(78, 115, 223, 0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .key:active {
@@ -137,7 +132,7 @@
         }
 
         .convert-button {
-            background-color: #4e73df;
+            background-color: #333;
             color: white;
             border: none;
             padding: 15px;
@@ -149,15 +144,15 @@
         }
 
         .convert-button:hover {
-            background-color: #3a56c4;
+            background-color: #555;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .clear-button {
-            background-color: #f8f9fe;
-            color: #4e73df;
-            border: 1px solid #e6e9f0;
+            background-color: #f8f9fc;
+            color: #333;
+            border: 1px solid #e0e0e0;
             padding: 15px;
             border-radius: 10px;
             font-size: 1.1rem;
@@ -167,7 +162,7 @@
         }
 
         .clear-button:hover {
-            background-color: #e6e9f0;
+            background-color: #e0e0e0;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -180,7 +175,7 @@
 
         .loading-spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #4e73df;
+            border-top: 4px solid #333;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -218,7 +213,7 @@
 
         .settings-content h2 {
             margin-bottom: 20px;
-            color: #4e73df;
+            color: #333;
             text-align: center;
         }
 
@@ -234,34 +229,34 @@
         }
 
         .close-btn:hover {
-            color: #4e73df;
+            color: #333;
         }
 
         .drop-area {
-            border: 2px dashed #4e73df;
+            border: 2px dashed #333;
             border-radius: 8px;
             padding: 20px;
             text-align: center;
             margin-bottom: 20px;
             transition: all 0.3s ease;
-            background-color: #f8f9fe;
+            background-color: #f8f9fc;
             cursor: pointer;
         }
 
         .drop-area:hover, .drop-area.dragover {
-            background-color: #e6e9f0;
-            border-color: #3a56c4;
+            background-color: #e0e0e0;
+            border-color: #555;
         }
 
         .drop-area p {
-            color: #8a93a6;
+            color: #666;
             margin-bottom: 15px;
             font-size: 0.9rem;
         }
 
         .drop-area i {
             font-size: 2rem;
-            color: #4e73df;
+            color: #333;
             margin-bottom: 15px;
             display: block;
         }
@@ -278,12 +273,12 @@
         }
 
         .text-input:focus {
-            border-color: #4e73df;
+            border-color: #333;
             outline: none;
         }
 
         .save-button {
-            background-color: #4e73df;
+            background-color: #333;
             color: white;
             border: none;
             padding: 15px;
@@ -296,7 +291,7 @@
         }
 
         .save-button:hover {
-            background-color: #3a56c4;
+            background-color: #555;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -330,25 +325,25 @@
             align-items: center;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #e6e9f0;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .payment-time {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             display: none; /* Sembunyikan jam */
         }
 
         .payment-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             margin-bottom: 5px;
         }
 
         .payment-subtitle {
-            color: #8a93a6;
+            color: #666;
             margin-bottom: 15px;
         }
 
@@ -373,7 +368,7 @@
         }
 
         .payment-info {
-            background-color: #f8f9fe;
+            background-color: #f8f9fc;
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
@@ -387,16 +382,16 @@
         }
 
         .info-label {
-            color: #8a93a6;
+            color: #666;
         }
 
         .info-value {
             font-weight: 600;
-            color: #4e73df;
+            color: #333;
         }
 
         .close-payment {
-            background-color: #4e73df;
+            background-color: #333;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -410,14 +405,14 @@
         }
 
         .close-payment:hover {
-            background-color: #3a56c4;
+            background-color: #555;
         }
 
         footer {
             text-align: center;
             margin-top: 50px;
             padding: 20px;
-            color: #8a93a6;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -429,7 +424,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
-            color: #4e73df;
+            color: #333;
         }
 
         .form-group input, .form-group textarea, .form-group select {
@@ -442,7 +437,7 @@
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: #4e73df;
+            border-color: #333;
             outline: none;
         }
 
@@ -470,13 +465,13 @@
 
         .password-content h2 {
             margin-bottom: 20px;
-            color: #4e73df;
+            color: #333;
         }
 
         .password-input {
             width: 100%;
             padding: 15px;
-            border: 2px solid #4e73df;
+            border: 2px solid #333;
             border-radius: 8px;
             font-size: 1.2rem;
             text-align: center;
@@ -485,7 +480,7 @@
         }
 
         .password-error {
-            color: #e74c3c;
+            color: #d32f2f;
             margin-bottom: 15px;
             display: none;
         }
@@ -503,14 +498,14 @@
             border: none;
             cursor: pointer;
             font-weight: 600;
-            color: #8a93a6;
+            color: #666;
             border-bottom: 3px solid transparent;
             white-space: nowrap;
         }
 
         .tab-btn.active {
-            color: #4e73df;
-            border-bottom: 3px solid #4e73df;
+            color: #333;
+            border-bottom: 3px solid #333;
         }
 
         .tab-content {
@@ -533,6 +528,7 @@
             padding: 10px 0;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
             z-index: 999;
+            border-top: 1px solid #e0e0e0;
         }
 
         .nav-btn {
@@ -542,13 +538,13 @@
             background: none;
             border: none;
             font-size: 0.8rem;
-            color: #8a93a6;
+            color: #666;
             cursor: pointer;
             transition: color 0.3s;
         }
 
         .nav-btn.active {
-            color: #4e73df;
+            color: #333;
         }
 
         .nav-btn i {
@@ -581,6 +577,7 @@
             border-radius: 8px;
             margin-bottom: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
         }
 
         .transaction-header {
@@ -591,11 +588,11 @@
 
         .transaction-id {
             font-weight: 600;
-            color: #4e73df;
+            color: #333;
         }
 
         .transaction-date {
-            color: #8a93a6;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -607,7 +604,7 @@
 
         .transaction-amount {
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             font-size: 1.2rem;
         }
 
@@ -631,6 +628,7 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
         }
 
         .qrcode-display img {
@@ -649,11 +647,11 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #f8f9fe;
+            background-color: #f8f9fc;
             border-radius: 8px;
-            border: 2px solid #e6e9f0;
+            border: 2px solid #e0e0e0;
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             min-height: 70px;
             display: flex;
             align-items: center;
@@ -672,20 +670,21 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             cursor: pointer;
             transition: all 0.2s;
+            border: 1px solid #e0e0e0;
         }
 
         .history-item:hover {
-            background-color: #f0f4ff;
+            background-color: #f0f0f0;
         }
 
         .history-phone {
             font-weight: 600;
             margin-bottom: 5px;
-            color: #4e73df;
+            color: #333;
         }
 
         .history-name {
-            color: #8a93a6;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -714,7 +713,7 @@
         .pulsa-title {
             font-size: 1.3rem;
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             margin-bottom: 15px;
             text-align: center;
         }
@@ -728,8 +727,8 @@
 
         .pulsa-option {
             padding: 15px;
-            background-color: #f8f9fe;
-            border: 1px solid #e6e9f0;
+            background-color: #f8f9fc;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             text-align: center;
             cursor: pointer;
@@ -737,21 +736,21 @@
         }
 
         .pulsa-option:hover {
-            background-color: #e6e9f0;
+            background-color: #e0e0e0;
         }
 
         .pulsa-option.active {
-            border-color: #4e73df;
-            background-color: #e6e9f0;
+            border-color: #333;
+            background-color: #e0e0e0;
         }
 
         .pulsa-amount {
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
         }
 
         .pulsa-price {
-            color: #8a93a6;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -766,6 +765,7 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
         }
 
         .debt-list {
@@ -779,6 +779,7 @@
             margin-bottom: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             position: relative;
+            border: 1px solid #e0e0e0;
         }
 
         .debt-header {
@@ -790,12 +791,12 @@
 
         .debt-name {
             font-weight: 600;
-            color: #4e73df;
+            color: #333;
             margin-bottom: 5px;
         }
 
         .debt-phone {
-            color: #8a93a6;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -807,7 +808,7 @@
 
         .debt-amount {
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             font-size: 1.2rem;
         }
 
@@ -835,12 +836,12 @@
             right: 10px;
             background: none;
             border: none;
-            color: #8a93a6;
+            color: #666;
             cursor: pointer;
         }
 
         .debt-item-menu:hover {
-            color: #4e73df;
+            color: #333;
         }
 
         .debt-item-menu-content {
@@ -853,6 +854,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 10;
             width: 120px;
+            border: 1px solid #e0e0e0;
         }
 
         .debt-item-menu-content button {
@@ -866,7 +868,7 @@
         }
 
         .debt-item-menu-content button:hover {
-            background-color: #f0f4ff;
+            background-color: #f0f0f0;
         }
 
         .debt-edit-modal {
@@ -918,18 +920,18 @@
             border: none;
             cursor: pointer;
             font-weight: 600;
-            color: #8a93a6;
+            color: #666;
             border-bottom: 3px solid transparent;
         }
 
         .finance-tab.active {
-            color: #4e73df;
-            border-bottom: 3px solid #4e73df;
+            color: #333;
+            border-bottom: 3px solid #333;
         }
 
         .debt-item-name {
             font-weight: 600;
-            color: #4e73df;
+            color: #333;
             margin-bottom: 5px;
         }
 
@@ -940,13 +942,13 @@
             right: 20px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #4e73df, #7a8eea);
+            background: linear-gradient(135deg, #333, #555);
             color: white;
             border: none;
             border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(78, 115, 223, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 998;
             display: flex;
             align-items: center;
@@ -956,7 +958,7 @@
 
         .inventory-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(78, 115, 223, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         /* Inventory Page */
@@ -974,6 +976,7 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
         }
 
         .inventory-list {
@@ -987,6 +990,7 @@
             margin-bottom: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             position: relative;
+            border: 1px solid #e0e0e0;
         }
 
         .inventory-header {
@@ -998,12 +1002,12 @@
 
         .inventory-name {
             font-weight: 600;
-            color: #4e73df;
+            color: #333;
             margin-bottom: 5px;
         }
 
         .inventory-category {
-            color: #8a93a6;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -1015,7 +1019,7 @@
 
         .inventory-stock {
             font-weight: bold;
-            color: #4e73df;
+            color: #333;
             font-size: 1.2rem;
         }
 
@@ -1026,7 +1030,7 @@
 
         .inventory-btn-small {
             padding: 5px 10px;
-            background-color: #4e73df;
+            background-color: #333;
             color: white;
             border: none;
             border-radius: 5px;
@@ -1035,7 +1039,7 @@
         }
 
         .inventory-btn-small:hover {
-            background-color: #3a56c4;
+            background-color: #555;
         }
 
         .inventory-item-menu {
@@ -1044,12 +1048,12 @@
             right: 10px;
             background: none;
             border: none;
-            color: #8a93a6;
+            color: #666;
             cursor: pointer;
         }
 
         .inventory-item-menu:hover {
-            color: #4e73df;
+            color: #333;
         }
 
         .inventory-item-menu-content {
@@ -1062,6 +1066,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 10;
             width: 120px;
+            border: 1px solid #e0e0e0;
         }
 
         .inventory-item-menu-content button {
@@ -1075,7 +1080,7 @@
         }
 
         .inventory-item-menu-content button:hover {
-            background-color: #f0f4ff;
+            background-color: #f0f0f0;
         }
 
         .inventory-edit-modal {
@@ -1101,7 +1106,7 @@
         }
 
         .stock-warning {
-            color: #e74c3c;
+            color: #d32f2f;
             font-weight: 600;
         }
 
@@ -1157,73 +1162,16 @@
                 height: 50px;
                 font-size: 1.3rem;
             }
-            
-    /* Mobile Full HD Optimization */
-    @media (max-width: 480px) {
-        .container {
-            max-width: 100%;
-            padding: 12px;
-            padding-bottom: 90px; /* Extra space for bottom nav */
         }
-        
-        header {
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        header h1 {
-            font-size: 1.5rem;
-        }
-        
-        .input-section, .debt-form, .inventory-form {
-            padding: 15px;
-        }
-        
-        .amount-display, .phone-display {
-            font-size: 2rem;
-            min-height: 70px;
-            padding: 12px;
-        }
-        
-        .numeric-keypad {
-            gap: 8px;
-        }
-        
-        .key {
-            padding: 16px;
-            font-size: 1.3rem;
-        }
-        
-        /* ... dan seterusnya (seluruh kode yang diberikan sebelumnya) ... */
-    }
-    
-    /* Very small devices */
-    @media (max-width: 350px) {
-        .key {
-            padding: 14px;
-            font-size: 1.2rem;
-        }
-        
-        .amount-display, .phone-display {
-            font-size: 1.8rem;
-        }
-        
-        header h1 {
-            font-size: 1.3rem;
-        }
-        
-        .input-section h3 {
-            font-size: 1.1rem;
-        }
-    }
-</style>
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Beranda Page -->
         <div class="page active" id="homePage">
             <header>
-                <h1 id="headerTitle">Aplikasi QRIS</h1>
-                <p id="headerSubtitle">Pembayaran menjadi mudah</p>
+                <h1 id="headerTitle">QRISku</h1>
+                <p id="headerSubtitle">Pembayaran QRIS Mudah dan Cepat</p>
                 <button class="profile-btn" id="profileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -1234,7 +1182,6 @@
                 <div class="numeric-keypad">
                     <button class="key" data-value="1">1</button>
                     <button class="key" data-value="2">2</button>
-                    <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
                     <button class="key" data-value="3">3</button>
                     <button class="key" data-value="4">4</button>
                     <button class="key" data-value="5">5</button>
@@ -1244,11 +1191,12 @@
                     <button class="key" data-value="9">9</button>
                     <button class="key" data-value="000">000</button>
                     <button class="key" data-value="0">0</button>
+                    <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
                 
                 <div class="action-buttons">
                     <button class="convert-button" id="convertButton">Terapkan</button>
-                    <button class="clear-button" id="clearButton">Delete</button>
+                    <button class="clear-button" id="clearButton">Clear</button>
                 </div>
                 
                 <div class="loading" id="loading">
@@ -1258,10 +1206,11 @@
             </div>
 
             <footer>
-                <p id="footerText"> </p>
+                <p id="footerText">© 2023 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
+        <!-- Keuangan Page -->
         <div class="page" id="financePage">
             <header>
                 <h1>Keuangan</h1>
@@ -1274,11 +1223,14 @@
                 <button class="finance-tab" data-tab="debts-tab">Hutang</button>
             </div>
 
+            <!-- Transactions Tab -->
             <div id="transactions-tab" class="tab-content active">
                 <div class="transaction-list" id="transactionList">
-                    </div>
+                    <!-- Transaction items will be added here dynamically -->
+                </div>
             </div>
 
+            <!-- Debts Tab -->
             <div id="debts-tab" class="tab-content">
                 <div class="debt-form">
                     <h3>Tambah Hutang Baru</h3>
@@ -1286,7 +1238,8 @@
                         <label for="debtName">Nama</label>
                         <input type="text" id="debtName" placeholder="Nama orang yang berhutang" list="debtNameList">
                         <datalist id="debtNameList">
-                            </datalist>
+                            <!-- Options will be added dynamically -->
+                        </datalist>
                     </div>
                     <div class="form-group">
                         <label for="debtPhone">Nomor Telepon</label>
@@ -1305,34 +1258,38 @@
 
                 <div class="debt-list" id="debtList">
                     <h3>Daftar Hutang</h3>
-                    </div>
+                    <!-- Debt items will be added here dynamically -->
+                </div>
             </div>
 
             <footer>
-                <p> </p>
+                <p>© 2023 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
+        <!-- Kode QRIS Page -->
         <div class="page" id="qrcodePage">
             <header>
-                <h1>QRIS</h1>
-                <p> </p>
+                <h1>Kode QRIS</h1>
+                <p>Scan kode QRIS untuk pembayaran</p>
                 <button class="profile-btn" id="qrcodeProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
             <div class="qrcode-display" id="qrcodeDisplay">
-                <p>QRIS</p>
+                <!-- QR code will be displayed here -->
+                <p>Kode QRIS akan ditampilkan di sini</p>
             </div>
 
             <footer>
-                <p> </p>
+                <p>© 2023 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
+        <!-- Pulsa Page -->
         <div class="page" id="pulsaPage">
             <header>
                 <h1>Isi Pulsa</h1>
-                <p> </p>
+                <p>Isi pulsa handphone dengan mudah</p>
                 <button class="profile-btn" id="pulsaProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -1350,26 +1307,28 @@
                     <button class="key" data-value="7">7</button>
                     <button class="key" data-value="8">8</button>
                     <button class="key" data-value="9">9</button>
-                    <button class="key" data-value="08">08</button>
+                    <button class="key" data-value="+62">+62</button>
                     <button class="key" data-value="0">0</button>
                     <button class="key" id="pulsaBackspaceBtn"><i class="fas fa-backspace"></i></button>
                 </div>
-              
+                
                 <div class="action-buttons">
                     <button class="convert-button" id="savePhoneButton">Simpan</button>
-                    <button class="clear-button" id="clearPhoneButton">Delete</button>
+                    <button class="clear-button" id="clearPhoneButton">Clear</button>
                 </div>
             </div>
 
             <div class="phone-history" id="phoneHistory">
                 <h3>Riwayat Nomor</h3>
-                </div>
+                <!-- Phone history items will be added here dynamically -->
+            </div>
 
             <footer>
-                <p> </p>
+                <p>© 2023 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
+        <!-- Inventory Page -->
         <div class="page" id="inventoryPage">
             <header>
                 <h1>Manajemen Inventori</h1>
@@ -1406,18 +1365,21 @@
 
             <div class="inventory-list" id="inventoryList">
                 <h3>Daftar Inventori</h3>
-                </div>
+                <!-- Inventory items will be added here dynamically -->
+            </div>
 
             <div class="shopping-list" id="shoppingList">
                 <h3>Daftar Belanja</h3>
-                </div>
+                <!-- Shopping list items will be added here dynamically -->
+            </div>
 
             <footer>
-                <p> </p>
+                <p>© 2023 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
     </div>
 
+    <!-- Bottom Navigation -->
     <div class="bottom-nav">
         <button class="nav-btn active" data-page="homePage"><i class="fas fa-home"></i><span>Beranda</span></button>
         <button class="nav-btn" data-page="financePage"><i class="fas fa-chart-line"></i><span>Keuangan</span></button>
@@ -1425,10 +1387,12 @@
         <button class="nav-btn" data-page="pulsaPage"><i class="fas fa-mobile-alt"></i><span>Pulsa</span></button>
     </div>
 
+    <!-- Inventory Button -->
     <button class="inventory-btn" id="inventoryButton" data-page="inventoryPage">
         <i class="fas fa-box"></i>
     </button>
 
+    <!-- Password Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-content">
             <h2>Masukkan Sandi</h2>
@@ -1439,6 +1403,7 @@
         </div>
     </div>
 
+    <!-- Settings Modal -->
     <div class="settings-modal" id="settingsModal">
         <div class="settings-content">
             <button class="close-btn" id="closeSettings"><i class="fas fa-times"></i></button>
@@ -1515,6 +1480,7 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
     <div class="payment-modal" id="paymentModal">
         <div class="payment-content">
             <div class="payment-header">
@@ -1522,7 +1488,7 @@
                 <div class="payment-close" id="closePaymentModal"><i class="fas fa-times"></i></div>
             </div>
             
-            <div class="payment-title" id="paymentTitle"> </div>
+            <div class="payment-title" id="paymentTitle">QRISku</div>
             <div class="payment-subtitle">Scan QRIS berikut untuk melakukan pembayaran</div>
             
             <div class="payment-amount" id="paymentAmount">Rp 0</div>
@@ -1534,13 +1500,14 @@
             <div class="payment-info">
                 <div class="info-item">
                     <span class="info-label">Merchant</span>
-                    <span class="info-value" id="paymentMerchant"> </span>
+                    <span class="info-value" id="paymentMerchant">Merchant</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Transaction ID</span>
                     <span class="info-value" id="transactionId">TRX-789012</span>
                 </div>
-                </div>
+                <!-- Status item dihapus -->
+            </div>
             
             <button class="close-payment" id="closePayment">Tutup</button>
         </div>
@@ -1558,9 +1525,29 @@
             </div>
             
             <div class="pulsa-options">
-                <div class="pulsa-option" data-amount="?">
-                    <div class="pulsa-amount">?</div>
-                    <div class="pulsa-price">Rp ?</div>
+                <div class="pulsa-option" data-amount="5000">
+                    <div class="pulsa-amount">5.000</div>
+                    <div class="pulsa-price">Rp 5.000</div>
+                </div>
+                <div class="pulsa-option" data-amount="10000">
+                    <div class="pulsa-amount">10.000</div>
+                    <div class="pulsa-price">Rp 10.000</div>
+                </div>
+                <div class="pulsa-option" data-amount="20000">
+                    <div class="pulsa-amount">20.000</div>
+                    <div class="pulsa-price">Rp 20.000</div>
+                </div>
+                <div class="pulsa-option" data-amount="50000">
+                    <div class="pulsa-amount">50.000</div>
+                    <div class="pulsa-price">Rp 50.000</div>
+                </div>
+                <div class="pulsa-option" data-amount="100000">
+                    <div class="pulsa-amount">100.000</div>
+                    <div class="pulsa-price">Rp 100.000</div>
+                </div>
+                <div class="pulsa-option" data-amount="0">
+                    <div class="pulsa-amount">Lainnya</div>
+                    <div class="pulsa-price">Custom</div>
                 </div>
             </div>
             
@@ -1573,6 +1560,7 @@
         </div>
     </div>
 
+    <!-- Debt Edit Modal -->
     <div class="debt-edit-modal" id="debtEditModal">
         <div class="debt-edit-content">
             <h2>Edit Hutang</h2>
@@ -1597,6 +1585,7 @@
         </div>
     </div>
 
+    <!-- Inventory Edit Modal -->
     <div class="inventory-edit-modal" id="inventoryEditModal">
         <div class="inventory-edit-content">
             <h2>Edit Barang</h2>
@@ -1610,8 +1599,6 @@
                     <option value="makanan">Makanan</option>
                     <option value="minuman">Minuman</option>
                     <option value="snack">Snack</option>
-                    <option value="obat">obat</option>
-                    <option value="alat">alat</option>
                     <option value="sembako">Sembako</option>
                     <option value="lainnya">Lainnya</option>
                 </select>
@@ -1731,10 +1718,10 @@
         let currentAmount = '0';
         let currentPhone = '0';
         let savedQrisImage = localStorage.getItem('qrisImage') || '';
-        let savedMerchant = localStorage.getItem('merchantName') || 'Merchant Anda';
-        let savedHeaderTitle = localStorage.getItem('headerTitle') || 'Aplikasi QRIS';
-        let savedHeaderSubtitle = localStorage.getItem('headerSubtitle') || 'Pembayaran menjadi mudah';
-        let savedFooterText = localStorage.getItem('footerText') || ' ';
+        let savedMerchant = localStorage.getItem('merchantName') || 'Merchant';
+        let savedHeaderTitle = localStorage.getItem('headerTitle') || 'QRISku';
+        let savedHeaderSubtitle = localStorage.getItem('headerSubtitle') || 'Pembayaran QRIS Mudah dan Cepat';
+        let savedFooterText = localStorage.getItem('footerText') || '© 2023 QRISku - Pembayaran QRIS';
         let savedQrisStaticCode = localStorage.getItem('qrisStaticCode') || '';
         let currentQrUrl = '';
         let phoneHistoryData = JSON.parse(localStorage.getItem('phoneHistory')) || [];
@@ -1749,28 +1736,30 @@
         let currentItemId = null;
         
         // Initialize
-        merchantName.value = savedMerchant;
-        headerTitleInput.value = savedHeaderTitle;
-        headerSubtitleInput.value = savedHeaderSubtitle;
-        footerTextInput.value = savedFooterText;
-        qrisStaticCode.value = savedQrisStaticCode;
-        paymentMerchant.textContent = savedMerchant;
-        headerTitle.textContent = savedHeaderTitle;
-        headerSubtitle.textContent = savedHeaderSubtitle;
-        footerText.textContent = savedFooterText;
-        paymentTitle.textContent = savedHeaderTitle;
-        renderPhoneHistory();
-        renderTransactions();
-        updateQrCodeDisplay();
-        renderDebts();
-        updateDebtNameList();
-        renderInventory();
-        renderShoppingList();
-        
-        // Show QRIS image preview if exists
-        if (savedQrisImage) {
-            qrisPreview.style.display = 'block';
-            qrisPreviewImg.src = savedQrisImage;
+        function initializeApp() {
+            merchantName.value = savedMerchant;
+            headerTitleInput.value = savedHeaderTitle;
+            headerSubtitleInput.value = savedHeaderSubtitle;
+            footerTextInput.value = savedFooterText;
+            qrisStaticCode.value = savedQrisStaticCode;
+            paymentMerchant.textContent = savedMerchant;
+            headerTitle.textContent = savedHeaderTitle;
+            headerSubtitle.textContent = savedHeaderSubtitle;
+            footerText.textContent = savedFooterText;
+            paymentTitle.textContent = savedHeaderTitle;
+            renderPhoneHistory();
+            renderTransactions();
+            updateQrCodeDisplay();
+            renderDebts();
+            updateDebtNameList();
+            renderInventory();
+            renderShoppingList();
+            
+            // Show QRIS image preview if exists
+            if (savedQrisImage) {
+                qrisPreview.style.display = 'block';
+                qrisPreviewImg.src = savedQrisImage;
+            }
         }
         
         // Finance tabs functionality
@@ -1863,10 +1852,10 @@
         
         // Render phone history
         function renderPhoneHistory() {
-            phoneHistory.innerHTML = '<h3>Riwayat Nomor</h3>';
+            phoneHistory.innerHTML = '';
             
             if (phoneHistoryData.length === 0) {
-                phoneHistory.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 10px;">Belum ada riwayat nomor handphone</p>';
+                phoneHistory.innerHTML = '<p style="text-align: center; color: #666; padding: 10px;">Belum ada riwayat nomor handphone</p>';
                 return;
             }
             
@@ -1897,7 +1886,7 @@
             const confirmedTransactions = transactions.filter(t => t.status === 'confirmed');
             
             if (confirmedTransactions.length === 0) {
-                transactionList.innerHTML = '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada transaksi yang dikonfirmasi</p>';
+                transactionList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada transaksi yang dikonfirmasi</p>';
                 return;
             }
             
@@ -1922,10 +1911,10 @@
         
         // Render debts
         function renderDebts() {
-            debtList.innerHTML = '<h3>Daftar Hutang</h3>';
+            debtList.innerHTML = '';
             
             if (debts.length === 0) {
-                debtList.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada catatan hutang</p>';
+                debtList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada catatan hutang</p>';
                 return;
             }
             
@@ -2049,14 +2038,16 @@
             if (savedQrisImage) {
                 qrcodeDisplay.innerHTML = `
                     <h3>${savedMerchant}</h3>
+                    <p> </p>
                     <img src="${savedQrisImage}" alt="QRIS Code" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                     <p>Scan Kode QRIS di atas untuk pembayaran</p>
                 `;
             } else {
                 qrcodeDisplay.innerHTML = `
                     <h3>${savedMerchant}</h3>
+                    <p> </p>
                     <div style="background-color: #f0f0f0; padding: 20px; display: inline-block; margin: 15px 0;">
-                        <i class="fas fa-qrcode" style="font-size: 150px; color: #4e73df;"></i>
+                        <i class="fas fa-qrcode" style="font-size: 150px; color: #333;"></i>
                     </div>
                     <p>Upload gambar QRIS melalui pengaturan</p>
                 `;
@@ -2065,10 +2056,10 @@
         
         // Render inventory
         function renderInventory() {
-            inventoryList.innerHTML = '<h3>Daftar Inventori</h3>';
+            inventoryList.innerHTML = '';
             
             if (inventory.length === 0) {
-                inventoryList.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 20px;">Belum ada data inventori</p>';
+                inventoryList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada data inventori</p>';
                 return;
             }
             
@@ -2077,8 +2068,8 @@
                 inventoryItem.className = 'inventory-item';
                 inventoryItem.dataset.id = item.id;
                 
-                const stockStatus = item.stock <= item.minStock ? 'stock-warning' : 'stock-adequate';
-                const stockText = item.stock <= item.minStock ? 'Stok Rendah!' : 'Stok Cukup';
+                const stockStatus = item.stock < item.minStock ? 'stock-warning' : 'stock-adequate';
+                const stockText = item.stock < item.minStock ? 'Stok Rendah!' : 'Stok Adekuat';
                 
                 inventoryItem.innerHTML = `
                     <button class="inventory-item-menu"><i class="fas fa-ellipsis-v"></i></button>
@@ -2187,14 +2178,16 @@
         
         // Render shopping list
         function renderShoppingList() {
-            shoppingList.innerHTML = '<h3>Daftar Belanja</h3>';
+            shoppingList.innerHTML = '';
             
             const lowStockItems = inventory.filter(item => item.stock < item.minStock);
             
             if (lowStockItems.length === 0) {
-                shoppingList.innerHTML += '<p style="text-align: center; color: #8a93a6; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
+                shoppingList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
                 return;
             }
+            
+            shoppingList.innerHTML = '<h3>Daftar Belanja (Stok Rendah)</h3>';
             
             lowStockItems.forEach(item => {
                 const shoppingItem = document.createElement('div');
@@ -2374,7 +2367,7 @@
             key.addEventListener('click', () => {
                 const value = key.getAttribute('data-value');
                 
-                if (currentAmount === '0' && value !== '000') {
+                if (currentAmount === '0') {
                     currentAmount = value;
                 } else {
                     currentAmount += value;
@@ -2885,12 +2878,11 @@
         }
         
         function formatNumber(num) {
-            // Ensure we handle the string '0' correctly
-            if (num === '0') return '0';
-            // Remove leading zeros before parsing, but allow a single '0'
-            const cleanedNum = num.replace(/^0+/, '') || '0';
-            return parseInt(cleanedNum).toLocaleString('id-ID');
+            return parseInt(num).toLocaleString('id-ID');
         }
+        
+        // Initialize the app
+        initializeApp();
         
         // Initialize amount display and time
         updateAmountDisplay();
