@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>QRISku - Pembayaran QRIS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -11,108 +11,138 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
         }
 
         body {
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            position: relative;
         }
 
         .container {
             max-width: 500px;
             margin: 0 auto;
-            padding: 20px;
-            padding-bottom: 100px; /* Space for bottom navigation and inventory button */
+            padding: 15px;
+            height: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 120px;
         }
 
+        /* Header Responsif */
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
             background: linear-gradient(135deg, #333, #555);
             color: white;
-            border-radius: 12px;
+            border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             position: relative;
         }
 
         header h1 {
-            margin-bottom: 10px;
-            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
         }
 
         header p {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
         }
 
         .profile-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: transform 0.2s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .profile-btn:hover {
             transform: scale(1.1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
+        /* Input Section Responsif */
         .input-section {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
             border: 1px solid #ddd;
         }
 
         .input-section h3 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #333;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             text-align: center;
         }
 
-        .amount-display {
+        .amount-display, .phone-display {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            padding: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            padding: 12px;
             background-color: #f8f9fc;
-            border-radius: 10px;
+            border-radius: 8px;
             border: 2px solid #e0e0e0;
             font-weight: bold;
             color: #333;
-            min-height: 90px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
+            word-break: break-all;
         }
 
         .numeric-keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
         }
 
         .key {
-            padding: 18px;
+            padding: 16px 8px;
             background-color: #fff;
             color: #333;
             border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1.5rem;
+            border-radius: 8px;
+            font-size: 1.3rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .key:hover {
@@ -128,67 +158,51 @@
         .action-buttons {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .convert-button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
+        .convert-button, .clear-button, .save-button, .confirm-payment {
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: none;
+            width: 100%;
         }
 
-        .convert-button:hover {
-            background-color: #555;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .convert-button, .save-button {
+            background-color: #333;
+            color: white;
+        }
+
+        .confirm-payment {
+            background-color: #2e7d32;
+            color: white;
+            margin-top: 10px;
         }
 
         .clear-button {
             background-color: #f8f9fc;
             color: #333;
             border: 1px solid #e0e0e0;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        }
+
+        .convert-button:hover, .save-button:hover {
+            background-color: #555;
+        }
+
+        .confirm-payment:hover {
+            background-color: #388e3c;
         }
 
         .clear-button:hover {
             background-color: #e0e0e0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .loading {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #333;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .settings-modal {
+        /* Modal Responsif */
+        .settings-modal, .payment-modal, .pulsa-modal, .password-modal, .debt-edit-modal, .inventory-edit-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -199,324 +213,32 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
-        .settings-content {
+        .settings-content, .payment-content, .pulsa-content, .password-content, .debt-edit-content, .inventory-edit-content {
             background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .settings-content h2 {
-            margin-bottom: 20px;
-            color: #333;
-            text-align: center;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #8a93a6;
-        }
-
-        .close-btn:hover {
-            color: #333;
-        }
-
-        .drop-area {
-            border: 2px dashed #333;
-            border-radius: 8px;
             padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            background-color: #f8f9fc;
-            cursor: pointer;
-        }
-
-        .drop-area:hover, .drop-area.dragover {
-            background-color: #e0e0e0;
-            border-color: #555;
-        }
-
-        .drop-area p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .drop-area i {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .text-input {
+            border-radius: 12px;
             width: 100%;
-            padding: 15px;
-            border: 1px solid #d5d9e4;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            resize: vertical;
-            transition: border-color 0.3s;
-        }
-
-        .text-input:focus {
-            border-color: #333;
-            outline: none;
-        }
-
-        .save-button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .save-button:hover {
-            background-color: #555;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .payment-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
+            max-width: 400px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
         }
 
         .payment-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 15px;
-            width: 90%;
             max-width: 350px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .payment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .payment-time {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #333;
-            display: none; /* Sembunyikan jam */
-        }
-
-        .payment-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .payment-subtitle {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .payment-amount {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #000;
-            margin: 15px 0;
-        }
-
-        .payment-qr {
-            margin: 15px 0;
         }
 
         .payment-qr img {
-            width: 220px;
-            height: 220px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            background: white;
+            width: 200px;
+            height: 200px;
+            max-width: 100%;
         }
 
-        .payment-info {
-            background-color: #f8f9fc;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            text-align: left;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .info-label {
-            color: #666;
-        }
-
-        .info-value {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .close-payment {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .close-payment:hover {
-            background-color: #555;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d5d9e4;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: #333;
-            outline: none;
-        }
-
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .password-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .password-content h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #333;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            text-align: center;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-        }
-
-        .password-error {
-            color: #d32f2f;
-            margin-bottom: 15px;
-            display: none;
-        }
-
-        .settings-tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            padding: 10px 15px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            border-bottom: 3px solid transparent;
-            white-space: nowrap;
-        }
-
-        .tab-btn.active {
-            color: #333;
-            border-bottom: 3px solid #333;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Bottom Navigation */
+        /* Bottom Navigation Responsif */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -525,7 +247,7 @@
             background-color: white;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
+            padding: 8px 0;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
             z-index: 999;
             border-top: 1px solid #e0e0e0;
@@ -537,10 +259,12 @@
             align-items: center;
             background: none;
             border: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #666;
             cursor: pointer;
             transition: color 0.3s;
+            flex: 1;
+            padding: 5px;
         }
 
         .nav-btn.active {
@@ -548,405 +272,22 @@
         }
 
         .nav-btn i {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
         }
 
-        /* New styles for additional pages */
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .transaction-list {
-            margin-top: 20px;
-        }
-
-        .transaction-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e0e0e0;
-        }
-
-        .transaction-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .transaction-id {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .transaction-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .transaction-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .transaction-amount {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.2rem;
-        }
-
-        .transaction-status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: none; /* Sembunyikan status pembayaran */
-        }
-
-        .status-success {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .qrcode-display {
-            text-align: center;
-            margin: 20px 0;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e0e0e0;
-        }
-
-        .qrcode-display img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-        }
-
-        .phone-input-section {
-            margin-bottom: 20px;
-        }
-
-        .phone-display {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f8f9fc;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            font-weight: bold;
-            color: #333;
-            min-height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phone-history {
-            margin-top: 20px;
-        }
-
-        .history-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid #e0e0e0;
-        }
-
-        .history-item:hover {
-            background-color: #f0f0f0;
-        }
-
-        .history-phone {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .history-name {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .pulsa-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pulsa-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 350px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .pulsa-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .pulsa-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .pulsa-option {
-            padding: 15px;
-            background-color: #f8f9fc;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .pulsa-option:hover {
-            background-color: #e0e0e0;
-        }
-
-        .pulsa-option.active {
-            border-color: #333;
-            background-color: #e0e0e0;
-        }
-
-        .pulsa-amount {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .pulsa-price {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Debt styles */
-        .debt-section {
-            margin-top: 20px;
-        }
-
-        .debt-form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .debt-list {
-            margin-top: 20px;
-        }
-
-        .debt-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            position: relative;
-            border: 1px solid #e0e0e0;
-        }
-
-        .debt-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            align-items: flex-start;
-        }
-
-        .debt-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .debt-phone {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .debt-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .debt-amount {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.2rem;
-        }
-
-        .debt-status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .status-pending {
-            background-color: #ffecb3;
-            color: #f57c00;
-        }
-
-        .status-paid {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .debt-item-menu {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-        }
-
-        .debt-item-menu:hover {
-            color: #333;
-        }
-
-        .debt-item-menu-content {
-            display: none;
-            position: absolute;
-            top: 25px;
-            right: 0;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            width: 120px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .debt-item-menu-content button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .debt-item-menu-content button:hover {
-            background-color: #f0f0f0;
-        }
-
-        .debt-edit-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .debt-edit-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        /* QRIS Image Preview */
-        .qris-preview {
-            text-align: center;
-            margin-top: 15px;
-            display: none;
-        }
-
-        .qris-preview img {
-            max-width: 100%;
-            max-height: 200px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        /* Finance Tabs */
-        .finance-tabs {
-            display: flex;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .finance-tab {
-            padding: 10px 15px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            border-bottom: 3px solid transparent;
-        }
-
-        .finance-tab.active {
-            color: #333;
-            border-bottom: 3px solid #333;
-        }
-
-        .debt-item-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        /* Inventory Button */
+        /* Inventory Button Responsif */
         .inventory-btn {
             position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            bottom: 70px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #333, #555);
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 998;
@@ -961,213 +302,223 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* Inventory Page */
-        #inventoryPage {
-            display: none;
+        /* Form Elements Responsif */
+        .form-group {
+            margin-bottom: 12px;
         }
 
-        #inventoryPage.active {
+        .form-group label {
             display: block;
-        }
-
-        .inventory-form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .inventory-list {
-            margin-top: 20px;
-        }
-
-        .inventory-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            position: relative;
-            border: 1px solid #e0e0e0;
-        }
-
-        .inventory-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            align-items: flex-start;
-        }
-
-        .inventory-name {
+            margin-bottom: 5px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 5px;
-        }
-
-        .inventory-category {
-            color: #666;
             font-size: 0.9rem;
         }
 
-        .inventory-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .inventory-stock {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.2rem;
-        }
-
-        .inventory-action {
-            display: flex;
-            gap: 10px;
-        }
-
-        .inventory-btn-small {
-            padding: 5px 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        .inventory-btn-small:hover {
-            background-color: #555;
-        }
-
-        .inventory-item-menu {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-        }
-
-        .inventory-item-menu:hover {
-            color: #333;
-        }
-
-        .inventory-item-menu-content {
-            display: none;
-            position: absolute;
-            top: 25px;
-            right: 0;
-            background-color: white;
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5d9e4;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            width: 120px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        /* Transaction, Debt, Inventory Items Responsif */
+        .transaction-item, .debt-item, .inventory-item {
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             border: 1px solid #e0e0e0;
         }
 
-        .inventory-item-menu-content button {
-            display: block;
+        .transaction-amount, .debt-amount, .inventory-stock {
+            font-size: 1.1rem;
+        }
+
+        /* Management Buttons Responsif */
+        .management-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .management-buttons button, .management-buttons label {
             width: 100%;
             padding: 10px;
-            background: none;
-            border: none;
-            text-align: left;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background-color: #fff;
+            color: #333;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-size: 0.85rem;
         }
 
-        .inventory-item-menu-content button:hover {
-            background-color: #f0f0f0;
-        }
-
-        .inventory-edit-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .inventory-edit-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .stock-warning {
-            color: #d32f2f;
-            font-weight: 600;
-        }
-
-        .stock-adequate {
-            color: #2e7d32;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
+        /* Media Queries untuk layar sangat kecil */
+        @media (max-width: 360px) {
             .container {
-                padding: 15px;
+                padding: 10px;
+                padding-bottom: 110px;
+            }
+            
+            header {
+                padding: 12px;
             }
             
             header h1 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
-            .amount-display {
-                font-size: 2rem;
+            .amount-display, .phone-display {
+                font-size: 1.5rem;
+                min-height: 60px;
+                padding: 10px;
             }
             
             .key {
-                padding: 15px;
-                font-size: 1.3rem;
+                padding: 14px 6px;
+                font-size: 1.2rem;
+                min-height: 48px;
             }
             
-            .payment-content {
-                padding: 20px;
-                max-width: 320px;
+            .numeric-keypad {
+                gap: 6px;
             }
             
-            .payment-amount {
-                font-size: 1.6rem;
+            .input-section {
+                padding: 12px;
             }
             
-            .payment-qr img {
-                width: 200px;
-                height: 200px;
+            .input-section h3 {
+                font-size: 1rem;
             }
             
-            .phone-display {
-                font-size: 1.5rem;
+            .nav-btn {
+                font-size: 0.7rem;
             }
             
-            .pulsa-options {
-                grid-template-columns: repeat(2, 1fr);
+            .nav-btn i {
+                font-size: 1rem;
             }
             
             .inventory-btn {
-                bottom: 70px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+                bottom: 65px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
             }
+            
+            .transaction-item, .debt-item, .inventory-item {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                padding-bottom: 100px;
+            }
+            
+            .bottom-nav {
+                padding: 5px 0;
+            }
+            
+            .nav-btn {
+                padding: 3px;
+            }
+            
+            .nav-btn i {
+                margin-bottom: 2px;
+            }
+        }
+
+        /* Perbaikan untuk elemen yang mungkin terpotong */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Pastikan konten dalam modal tidak melebihi layar */
+        .tab-content {
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        /* Loading spinner responsif */
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border-width: 3px;
+        }
+
+        /* QR Code display responsif */
+        .qrcode-display img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* History items responsif */
+        .history-item {
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        /* Hilangkan efek hover pada perangkat touch */
+        @media (hover: none) {
+            .key:hover, .convert-button:hover, .clear-button:hover, 
+            .save-button:hover, .confirm-payment:hover, .profile-btn:hover,
+            .nav-btn:hover, .inventory-btn:hover {
+                transform: none;
+                background-color: initial;
+            }
+            
+            .key:active, .convert-button:active, .clear-button:active, 
+            .save-button:active, .confirm-payment:active, .profile-btn:active,
+            .nav-btn:active, .inventory-btn:active {
+                transform: scale(0.98);
+                opacity: 0.8;
+            }
+        }
+
+        /* Pastikan teks tidak melebihi container */
+        .transaction-id, .debt-name, .inventory-name {
+            word-break: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Perbaikan untuk form yang panjang */
+        .debt-form, .inventory-form {
+            padding: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #666;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Beranda Page -->
         <div class="page active" id="homePage">
             <header>
                 <h1 id="headerTitle">QRISku</h1>
@@ -1206,11 +557,10 @@
             </div>
 
             <footer>
-                <p id="footerText">© 2023 QRISku - Pembayaran QRIS</p>
+                <p id="footerText">© 2025 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
-        <!-- Keuangan Page -->
         <div class="page" id="financePage">
             <header>
                 <h1>Keuangan</h1>
@@ -1223,14 +573,11 @@
                 <button class="finance-tab" data-tab="debts-tab">Hutang</button>
             </div>
 
-            <!-- Transactions Tab -->
             <div id="transactions-tab" class="tab-content active">
                 <div class="transaction-list" id="transactionList">
-                    <!-- Transaction items will be added here dynamically -->
                 </div>
             </div>
 
-            <!-- Debts Tab -->
             <div id="debts-tab" class="tab-content">
                 <div class="debt-form">
                     <h3>Tambah Hutang Baru</h3>
@@ -1238,7 +585,6 @@
                         <label for="debtName">Nama</label>
                         <input type="text" id="debtName" placeholder="Nama orang yang berhutang" list="debtNameList">
                         <datalist id="debtNameList">
-                            <!-- Options will be added dynamically -->
                         </datalist>
                     </div>
                     <div class="form-group">
@@ -1258,16 +604,14 @@
 
                 <div class="debt-list" id="debtList">
                     <h3>Daftar Hutang</h3>
-                    <!-- Debt items will be added here dynamically -->
                 </div>
             </div>
 
             <footer>
-                <p>© 2023 QRISku - Pembayaran QRIS</p>
+                <p>© 2025 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
-        <!-- Kode QRIS Page -->
         <div class="page" id="qrcodePage">
             <header>
                 <h1>Kode QRIS</h1>
@@ -1276,16 +620,14 @@
             </header>
 
             <div class="qrcode-display" id="qrcodeDisplay">
-                <!-- QR code will be displayed here -->
                 <p>Kode QRIS akan ditampilkan di sini</p>
             </div>
 
             <footer>
-                <p>© 2023 QRISku - Pembayaran QRIS</p>
+                <p>© 2025 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
-        <!-- Pulsa Page -->
         <div class="page" id="pulsaPage">
             <header>
                 <h1>Isi Pulsa</h1>
@@ -1320,15 +662,13 @@
 
             <div class="phone-history" id="phoneHistory">
                 <h3>Riwayat Nomor</h3>
-                <!-- Phone history items will be added here dynamically -->
             </div>
 
             <footer>
-                <p>© 2023 QRISku - Pembayaran QRIS</p>
+                <p>© 2025 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
 
-        <!-- Inventory Page -->
         <div class="page" id="inventoryPage">
             <header>
                 <h1>Manajemen Inventori</h1>
@@ -1341,6 +681,10 @@
                 <div class="form-group">
                     <label for="itemName">Nama Barang</label>
                     <input type="text" id="itemName" placeholder="Nama barang">
+                </div>
+                <div class="form-group">
+                    <label for="itemPrice">Harga Jual</label>
+                    <input type="number" id="itemPrice" placeholder="Harga Jual per item">
                 </div>
                 <div class="form-group">
                     <label for="itemCategory">Kategori</label>
@@ -1362,24 +706,34 @@
                 </div>
                 <button class="save-button" id="addItemButton">Tambah Barang</button>
             </div>
+            
+            <div class="inventory-management">
+                 <h3>Manajemen Data Inventori</h3>
+                 <div class="management-buttons">
+                    <button id="downloadCsvButton">Download CSV</button>
+                    <button id="backupButton">Backup JSON</button>
+                    <label for="restoreInput">Restore JSON</label>
+                    <input type="file" id="restoreInput" accept=".json" style="display:none;">
+                    <label for="importCsvInput">Import CSV</label>
+                    <input type="file" id="importCsvInput" accept=".csv" style="display:none;">
+                 </div>
+                 <p style="font-size: 0.8rem; text-align:center; color: #666;">Gunakan file .csv atau .json untuk menambah atau memulihkan data.</p>
+            </div>
 
             <div class="inventory-list" id="inventoryList">
                 <h3>Daftar Inventori</h3>
-                <!-- Inventory items will be added here dynamically -->
             </div>
 
             <div class="shopping-list" id="shoppingList">
                 <h3>Daftar Belanja</h3>
-                <!-- Shopping list items will be added here dynamically -->
             </div>
 
             <footer>
-                <p>© 2023 QRISku - Pembayaran QRIS</p>
+                <p>© 2025 QRISku - Pembayaran QRIS</p>
             </footer>
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
     <div class="bottom-nav">
         <button class="nav-btn active" data-page="homePage"><i class="fas fa-home"></i><span>Beranda</span></button>
         <button class="nav-btn" data-page="financePage"><i class="fas fa-chart-line"></i><span>Keuangan</span></button>
@@ -1387,12 +741,10 @@
         <button class="nav-btn" data-page="pulsaPage"><i class="fas fa-mobile-alt"></i><span>Pulsa</span></button>
     </div>
 
-    <!-- Inventory Button -->
     <button class="inventory-btn" id="inventoryButton" data-page="inventoryPage">
         <i class="fas fa-box"></i>
     </button>
 
-    <!-- Password Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-content">
             <h2>Masukkan Sandi</h2>
@@ -1403,7 +755,6 @@
         </div>
     </div>
 
-    <!-- Settings Modal -->
     <div class="settings-modal" id="settingsModal">
         <div class="settings-content">
             <button class="close-btn" id="closeSettings"><i class="fas fa-times"></i></button>
@@ -1480,7 +831,6 @@
         </div>
     </div>
 
-    <!-- Payment Modal -->
     <div class="payment-modal" id="paymentModal">
         <div class="payment-content">
             <div class="payment-header">
@@ -1506,14 +856,13 @@
                     <span class="info-label">Transaction ID</span>
                     <span class="info-value" id="transactionId">TRX-789012</span>
                 </div>
-                <!-- Status item dihapus -->
             </div>
             
+            <button class="confirm-payment" id="confirmPayment">Konfirmasi Pembayaran</button>
             <button class="close-payment" id="closePayment">Tutup</button>
         </div>
     </div>
 
-    <!-- Pulsa Modal -->
     <div class="pulsa-modal" id="pulsaModal">
         <div class="pulsa-content">
             <button class="close-btn" id="closePulsaModal"><i class="fas fa-times"></i></button>
@@ -1560,7 +909,6 @@
         </div>
     </div>
 
-    <!-- Debt Edit Modal -->
     <div class="debt-edit-modal" id="debtEditModal">
         <div class="debt-edit-content">
             <h2>Edit Hutang</h2>
@@ -1585,13 +933,16 @@
         </div>
     </div>
 
-    <!-- Inventory Edit Modal -->
     <div class="inventory-edit-modal" id="inventoryEditModal">
         <div class="inventory-edit-content">
             <h2>Edit Barang</h2>
             <div class="form-group">
                 <label for="editItemName">Nama Barang</label>
                 <input type="text" id="editItemName" placeholder="Nama barang">
+            </div>
+            <div class="form-group">
+                <label for="editItemPrice">Harga Jual</label>
+                <input type="number" id="editItemPrice" placeholder="Harga Jual per item">
             </div>
             <div class="form-group">
                 <label for="editItemCategory">Kategori</label>
@@ -1640,6 +991,7 @@
         const paymentTitle = document.getElementById('paymentTitle');
         const paymentQr = document.getElementById('paymentQr');
         const closePayment = document.getElementById('closePayment');
+        const confirmPayment = document.getElementById('confirmPayment');
         const closePaymentModal = document.getElementById('closePaymentModal');
         const loading = document.getElementById('loading');
         const qrisDropArea = document.getElementById('qrisDropArea');
@@ -1700,6 +1052,7 @@
         
         // Inventory elements
         const itemName = document.getElementById('itemName');
+        const itemPrice = document.getElementById('itemPrice');
         const itemCategory = document.getElementById('itemCategory');
         const itemStock = document.getElementById('itemStock');
         const itemMinStock = document.getElementById('itemMinStock');
@@ -1708,11 +1061,16 @@
         const shoppingList = document.getElementById('shoppingList');
         const inventoryEditModal = document.getElementById('inventoryEditModal');
         const editItemName = document.getElementById('editItemName');
+        const editItemPrice = document.getElementById('editItemPrice');
         const editItemCategory = document.getElementById('editItemCategory');
         const editItemStock = document.getElementById('editItemStock');
         const editItemMinStock = document.getElementById('editItemMinStock');
         const saveEditItemButton = document.getElementById('saveEditItemButton');
         const closeEditItemModal = document.getElementById('closeEditItemModal');
+        const downloadCsvButton = document.getElementById('downloadCsvButton');
+        const backupButton = document.getElementById('backupButton');
+        const restoreInput = document.getElementById('restoreInput');
+        const importCsvInput = document.getElementById('importCsvInput');
         
         // State
         let currentAmount = '0';
@@ -1721,9 +1079,10 @@
         let savedMerchant = localStorage.getItem('merchantName') || 'Merchant';
         let savedHeaderTitle = localStorage.getItem('headerTitle') || 'QRISku';
         let savedHeaderSubtitle = localStorage.getItem('headerSubtitle') || 'Pembayaran QRIS Mudah dan Cepat';
-        let savedFooterText = localStorage.getItem('footerText') || '© 2023 QRISku - Pembayaran QRIS';
+        let savedFooterText = localStorage.getItem('footerText') || '© 2025 QRISku - Pembayaran QRIS';
         let savedQrisStaticCode = localStorage.getItem('qrisStaticCode') || '';
         let currentQrUrl = '';
+        let currentTransactionIdForConfirmation = null;
         let phoneHistoryData = JSON.parse(localStorage.getItem('phoneHistory')) || [];
         let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
         let selectedPulsaAmount = 0;
@@ -1734,6 +1093,19 @@
         let passwordContext = null;
         let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
         let currentItemId = null;
+        
+        // Helper Functions
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        
+        function updateAmountDisplay() {
+            amountDisplay.textContent = formatNumber(currentAmount);
+        }
+        
+        function updatePhoneDisplay() {
+            phoneDisplay.textContent = currentPhone;
+        }
         
         // Initialize
         function initializeApp() {
@@ -1767,11 +1139,9 @@
             tab.addEventListener('click', () => {
                 const tabId = tab.getAttribute('data-tab');
                 
-                // Remove active class from all tabs and contents
                 financeTabs.forEach(t => t.classList.remove('active'));
                 financeTabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active class to current tab and content
                 tab.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             });
@@ -1782,54 +1152,53 @@
             tabBtn.addEventListener('click', () => {
                 const tabId = tabBtn.getAttribute('data-tab');
                 
-                // Remove active class from all tabs and contents
                 tabBtns.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active class to current tab and content
                 tabBtn.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             });
         });
         
         // Navigation functionality
+        function switchPage(pageId) {
+            navBtns.forEach(btn => {
+                if(btn.getAttribute('data-page') === pageId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+             pages.forEach(page => {
+                if(page.id === pageId) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+
+             // Update specific page content if needed
+             if (pageId === 'financePage') {
+                 renderTransactions();
+                 renderDebts();
+             } else if (pageId === 'qrcodePage') {
+                 updateQrCodeDisplay();
+             } else if (pageId === 'inventoryPage') {
+                 renderInventory();
+                 renderShoppingList();
+             }
+        }
+
         navBtns.forEach(navBtn => {
             navBtn.addEventListener('click', () => {
                 const pageId = navBtn.getAttribute('data-page');
-                
-                // Remove active class from all nav buttons and pages
-                navBtns.forEach(btn => btn.classList.remove('active'));
-                pages.forEach(page => page.classList.remove('active'));
-                
-                // Add active class to current nav button and page
-                navBtn.classList.add('active');
-                document.getElementById(pageId).classList.add('active');
-                
-                // Update specific page content if needed
-                if (pageId === 'financePage') {
-                    renderTransactions();
-                    renderDebts();
-                } else if (pageId === 'qrcodePage') {
-                    updateQrCodeDisplay();
-                } else if (pageId === 'inventoryPage') {
-                    renderInventory();
-                    renderShoppingList();
-                }
+                switchPage(pageId);
             });
         });
         
         // Inventory button functionality
         inventoryButton.addEventListener('click', () => {
-            // Remove active class from all nav buttons and pages
-            navBtns.forEach(btn => btn.classList.remove('active'));
-            pages.forEach(page => page.classList.remove('active'));
-            
-            // Add active class to inventory page
-            document.getElementById('inventoryPage').classList.add('active');
-            
-            // Update inventory content
-            renderInventory();
-            renderShoppingList();
+            switchPage('inventoryPage');
         });
         
         // Update time
@@ -1852,10 +1221,10 @@
         
         // Render phone history
         function renderPhoneHistory() {
-            phoneHistory.innerHTML = '';
+            phoneHistory.innerHTML = '<h3>Riwayat Nomor</h3>';
             
             if (phoneHistoryData.length === 0) {
-                phoneHistory.innerHTML = '<p style="text-align: center; color: #666; padding: 10px;">Belum ada riwayat nomor handphone</p>';
+                phoneHistory.innerHTML += '<p style="text-align: center; color: #666; padding: 10px;">Belum ada riwayat nomor handphone</p>';
                 return;
             }
             
@@ -1882,11 +1251,10 @@
         function renderTransactions() {
             transactionList.innerHTML = '';
             
-            // Filter only confirmed transactions
-            const confirmedTransactions = transactions.filter(t => t.status === 'confirmed');
+            const confirmedTransactions = transactions.filter(t => t.status === 'success').sort((a, b) => new Date(b.rawDate) - new Date(a.rawDate));
             
             if (confirmedTransactions.length === 0) {
-                transactionList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada transaksi yang dikonfirmasi</p>';
+                transactionList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada transaksi</p>';
                 return;
             }
             
@@ -1894,7 +1262,6 @@
                 const transactionItem = document.createElement('div');
                 transactionItem.className = 'transaction-item';
                 
-                // Hapus status dari tampilan transaksi
                 transactionItem.innerHTML = `
                     <div class="transaction-header">
                         <div class="transaction-id">${transaction.id}</div>
@@ -1902,6 +1269,7 @@
                     </div>
                     <div class="transaction-details">
                         <div class="transaction-amount">Rp ${formatNumber(transaction.amount)}</div>
+                        <div class="transaction-status status-success">Berhasil</div>
                     </div>
                 `;
                 
@@ -1911,10 +1279,10 @@
         
         // Render debts
         function renderDebts() {
-            debtList.innerHTML = '';
+            debtList.innerHTML = '<h3>Daftar Hutang</h3>';
             
             if (debts.length === 0) {
-                debtList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada catatan hutang</p>';
+                debtList.innerHTML += '<p style="text-align: center; color: #666; padding: 20px;">Belum ada catatan hutang</p>';
                 return;
             }
             
@@ -1944,7 +1312,6 @@
                     </div>
                 `;
                 
-                // Toggle menu
                 const menuBtn = debtItem.querySelector('.debt-item-menu');
                 const menuContent = debtItem.querySelector('.debt-item-menu-content');
                 
@@ -1956,7 +1323,6 @@
                     menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
                 });
                 
-                // Edit debt
                 debtItem.querySelector('.edit-debt').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const debtId = e.target.getAttribute('data-id');
@@ -1964,7 +1330,6 @@
                     menuContent.style.display = 'none';
                 });
                 
-                // Delete debt
                 debtItem.querySelector('.delete-debt').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const debtId = e.target.getAttribute('data-id');
@@ -1976,7 +1341,6 @@
                     menuContent.style.display = 'none';
                 });
                 
-                // Toggle debt status
                 const statusElement = debtItem.querySelector('.debt-status');
                 statusElement.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -1991,7 +1355,6 @@
                 debtList.appendChild(debtItem);
             });
             
-            // Close menu when clicking outside
             document.addEventListener('click', () => {
                 document.querySelectorAll('.debt-item-menu-content').forEach(menu => {
                     menu.style.display = 'none';
@@ -2011,7 +1374,6 @@
             });
         }
         
-        // Auto-fill phone number when selecting a name
         debtName.addEventListener('input', () => {
             const selectedName = debtName.value;
             const existingDebt = debts.find(debt => debt.name === selectedName);
@@ -2021,7 +1383,6 @@
             }
         });
         
-        // Show password prompt for debt actions
         function showPasswordPrompt(context, debtId) {
             passwordContext = context;
             currentDebtId = debtId;
@@ -2031,7 +1392,6 @@
             passwordInput.focus();
         }
         
-        // Update QR code display
         function updateQrCodeDisplay() {
             qrcodeDisplay.innerHTML = '';
             
@@ -2056,10 +1416,10 @@
         
         // Render inventory
         function renderInventory() {
-            inventoryList.innerHTML = '';
+            inventoryList.innerHTML = '<h3>Daftar Inventori</h3>';
             
             if (inventory.length === 0) {
-                inventoryList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada data inventori</p>';
+                inventoryList.innerHTML += '<p style="text-align: center; color: #666; padding: 20px;">Belum ada data inventori</p>';
                 return;
             }
             
@@ -2068,8 +1428,8 @@
                 inventoryItem.className = 'inventory-item';
                 inventoryItem.dataset.id = item.id;
                 
-                const stockStatus = item.stock < item.minStock ? 'stock-warning' : 'stock-adequate';
-                const stockText = item.stock < item.minStock ? 'Stok Rendah!' : 'Stok Adekuat';
+                const stockStatus = item.stock <= item.minStock ? 'stock-warning' : 'stock-adequate';
+                const stockText = item.stock <= item.minStock ? 'Stok Rendah!' : 'Stok Cukup';
                 
                 inventoryItem.innerHTML = `
                     <button class="inventory-item-menu"><i class="fas fa-ellipsis-v"></i></button>
@@ -2082,6 +1442,7 @@
                             <div class="inventory-name">${item.name}</div>
                             <div class="inventory-category">${getCategoryName(item.category)}</div>
                         </div>
+                        <div class="inventory-price">Rp ${formatNumber(item.price || 0)}</div>
                     </div>
                     <div class="inventory-details">
                         <div>
@@ -2091,11 +1452,11 @@
                         <div class="inventory-action">
                             <button class="inventory-btn-small decrease-stock" data-id="${item.id}">-</button>
                             <button class="inventory-btn-small increase-stock" data-id="${item.id}">+</button>
+                            <button class="inventory-btn-small sell sell-item" data-id="${item.id}">Jual</button>
                         </div>
                     </div>
                 `;
                 
-                // Toggle menu
                 const menuBtn = inventoryItem.querySelector('.inventory-item-menu');
                 const menuContent = inventoryItem.querySelector('.inventory-item-menu-content');
                 
@@ -2107,7 +1468,6 @@
                     menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
                 });
                 
-                // Edit item
                 inventoryItem.querySelector('.edit-item').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const itemId = e.target.getAttribute('data-id');
@@ -2115,6 +1475,7 @@
                     
                     if (item) {
                         editItemName.value = item.name;
+                        editItemPrice.value = item.price;
                         editItemCategory.value = item.category;
                         editItemStock.value = item.stock;
                         editItemMinStock.value = item.minStock;
@@ -2124,7 +1485,6 @@
                     menuContent.style.display = 'none';
                 });
                 
-                // Delete item
                 inventoryItem.querySelector('.delete-item').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const itemId = e.target.getAttribute('data-id');
@@ -2137,7 +1497,6 @@
                     menuContent.style.display = 'none';
                 });
                 
-                // Decrease stock
                 inventoryItem.querySelector('.decrease-stock').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const itemId = e.target.getAttribute('data-id');
@@ -2151,7 +1510,6 @@
                     }
                 });
                 
-                // Increase stock
                 inventoryItem.querySelector('.increase-stock').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const itemId = e.target.getAttribute('data-id');
@@ -2165,10 +1523,46 @@
                     }
                 });
                 
+                // POS Sell button
+                 inventoryItem.querySelector('.sell-item').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const itemId = e.target.getAttribute('data-id');
+                    const itemIndex = inventory.findIndex(i => i.id === itemId);
+                    const item = inventory[itemIndex];
+
+                    const quantity = prompt(`Berapa banyak "${item.name}" yang ingin dijual?\nStok tersedia: ${item.stock}`, "1");
+
+                    if (quantity === null || quantity.trim() === '') return;
+
+                    const qty = parseInt(quantity);
+                    if (isNaN(qty) || qty <= 0) {
+                        alert("Jumlah tidak valid.");
+                        return;
+                    }
+                    if (qty > item.stock) {
+                        alert(`Stok tidak mencukupi. Stok tersisa hanya ${item.stock}.`);
+                        return;
+                    }
+
+                    // Calculate total and update stock
+                    const total = qty * item.price;
+                    inventory[itemIndex].stock -= qty;
+                    localStorage.setItem('inventory', JSON.stringify(inventory));
+
+                    // Switch to home page and set amount
+                    currentAmount = String(total);
+                    updateAmountDisplay();
+                    switchPage('homePage');
+                    
+                    // Re-render inventory in background
+                    renderInventory();
+                    renderShoppingList();
+                });
+
+                
                 inventoryList.appendChild(inventoryItem);
             });
             
-            // Close menu when clicking outside
             document.addEventListener('click', () => {
                 document.querySelectorAll('.inventory-item-menu-content').forEach(menu => {
                     menu.style.display = 'none';
@@ -2180,19 +1574,21 @@
         function renderShoppingList() {
             shoppingList.innerHTML = '';
             
-            const lowStockItems = inventory.filter(item => item.stock < item.minStock);
+            const lowStockItems = inventory.filter(item => item.stock <= item.minStock);
             
             if (lowStockItems.length === 0) {
-                shoppingList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
+                shoppingList.innerHTML = '<h3 style="margin-top:20px;">Daftar Belanja</h3><p style="text-align: center; color: #666; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
                 return;
             }
             
-            shoppingList.innerHTML = '<h3>Daftar Belanja (Stok Rendah)</h3>';
+            shoppingList.innerHTML = '<h3 style="margin-top:20px;">Daftar Belanja (Stok Rendah)</h3>';
             
             lowStockItems.forEach(item => {
                 const shoppingItem = document.createElement('div');
                 shoppingItem.className = 'inventory-item';
                 
+                const needed = Math.max(0, item.minStock - item.stock + 1);
+
                 shoppingItem.innerHTML = `
                     <div class="inventory-header">
                         <div>
@@ -2203,7 +1599,7 @@
                     <div class="inventory-details">
                         <div>
                             <div class="stock-warning">Stok: ${item.stock} (Min: ${item.minStock})</div>
-                            <div>Perlu dibeli: ${item.minStock - item.stock}</div>
+                            <div>Perlu dibeli: setidaknya ${needed}</div>
                         </div>
                     </div>
                 `;
@@ -2212,70 +1608,32 @@
             });
         }
         
-        // Get category name
         function getCategoryName(category) {
             const categories = {
-                'makanan': 'Makanan',
-                'minuman': 'Minuman',
-                'snack': 'Snack',
-                'sembako': 'Sembako',
-                'lainnya': 'Lainnya'
+                'makanan': 'Makanan', 'minuman': 'Minuman', 'snack': 'Snack',
+                'sembako': 'Sembako', 'lainnya': 'Lainnya'
             };
-            
             return categories[category] || 'Lainnya';
         }
         
         // Event Listeners
-        profileBtn.addEventListener('click', () => {
-            passwordContext = 'settings';
-            passwordModal.style.display = 'flex';
-            passwordInput.value = '';
-            passwordError.style.display = 'none';
-            passwordInput.focus();
+        [profileBtn, financeProfileBtn, qrcodeProfileBtn, pulsaProfileBtn, inventoryProfileBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                passwordContext = 'settings';
+                passwordModal.style.display = 'flex';
+                passwordInput.value = '';
+                passwordError.style.display = 'none';
+                passwordInput.focus();
+            });
         });
-        
-        financeProfileBtn.addEventListener('click', () => {
-            passwordContext = 'settings';
-            passwordModal.style.display = 'flex';
-            passwordInput.value = '';
-            passwordError.style.display = 'none';
-            passwordInput.focus();
-        });
-        
-        qrcodeProfileBtn.addEventListener('click', () => {
-            passwordContext = 'settings';
-            passwordModal.style.display = 'flex';
-            passwordInput.value = '';
-            passwordError.style.display = 'none';
-            passwordInput.focus();
-        });
-        
-        pulsaProfileBtn.addEventListener('click', () => {
-            passwordContext = 'settings';
-            passwordModal.style.display = 'flex';
-            passwordInput.value = '';
-            passwordError.style.display = 'none';
-            passwordInput.focus();
-        });
-        
-        inventoryProfileBtn.addEventListener('click', () => {
-            passwordContext = 'settings';
-            passwordModal.style.display = 'flex';
-            passwordInput.value = '';
-            passwordError.style.display = 'none';
-            passwordInput.focus();
-        });
-        
-        closePassword.addEventListener('click', () => {
-            passwordModal.style.display = 'none';
-        });
+
+        closePassword.addEventListener('click', () => { passwordModal.style.display = 'none'; });
         
         submitPassword.addEventListener('click', () => {
             if (passwordInput.value === appPassword) {
                 passwordModal.style.display = 'none';
                 
                 if (passwordContext === 'status') {
-                    // Update debt status
                     const debtIndex = debts.findIndex(d => d.id === currentDebtId);
                     if (debtIndex >= 0) {
                         debts[debtIndex].status = 'paid';
@@ -2283,7 +1641,6 @@
                         renderDebts();
                     }
                 } else if (passwordContext === 'edit') {
-                    // Edit debt
                     const debt = debts.find(d => d.id === currentDebtId);
                     if (debt) {
                         editDebtName.value = debt.name;
@@ -2293,140 +1650,63 @@
                         debtEditModal.style.display = 'flex';
                     }
                 } else {
-                    // Open settings
                     settingsModal.style.display = 'flex';
                 }
             } else {
                 passwordError.style.display = 'block';
                 passwordInput.value = '';
-                setTimeout(() => {
-                    passwordError.style.display = 'none';
-                }, 2000);
+                setTimeout(() => { passwordError.style.display = 'none'; }, 2000);
             }
         });
         
-        closeSettings.addEventListener('click', () => {
-            settingsModal.style.display = 'none';
+        closeSettings.addEventListener('click', () => { settingsModal.style.display = 'none'; });
+        closeEditDebtModal.addEventListener('click', () => { debtEditModal.style.display = 'none'; });
+        closeEditItemModal.addEventListener('click', () => { inventoryEditModal.style.display = 'none'; });
+        closePaymentModal.addEventListener('click', () => { paymentModal.style.display = 'none'; });
+        closePulsaModal.addEventListener('click', () => { pulsaModal.style.display = 'none'; });
+        
+        [passwordModal, settingsModal, debtEditModal, inventoryEditModal, paymentModal, pulsaModal].forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
         });
         
-        closeEditDebtModal.addEventListener('click', () => {
-            debtEditModal.style.display = 'none';
-        });
-        
-        closeEditItemModal.addEventListener('click', () => {
-            inventoryEditModal.style.display = 'none';
-        });
-        
-        closePaymentModal.addEventListener('click', () => {
-            paymentModal.style.display = 'none';
-        });
-        
-        closePulsaModal.addEventListener('click', () => {
-            pulsaModal.style.display = 'none';
-        });
-        
-        // Close modal when clicking outside
-        passwordModal.addEventListener('click', (e) => {
-            if (e.target === passwordModal) {
-                passwordModal.style.display = 'none';
-            }
-        });
-        
-        settingsModal.addEventListener('click', (e) => {
-            if (e.target === settingsModal) {
-                settingsModal.style.display = 'none';
-            }
-        });
-        
-        debtEditModal.addEventListener('click', (e) => {
-            if (e.target === debtEditModal) {
-                debtEditModal.style.display = 'none';
-            }
-        });
-        
-        inventoryEditModal.addEventListener('click', (e) => {
-            if (e.target === inventoryEditModal) {
-                inventoryEditModal.style.display = 'none';
-            }
-        });
-        
-        paymentModal.addEventListener('click', (e) => {
-            if (e.target === paymentModal) {
-                paymentModal.style.display = 'none';
-            }
-        });
-        
-        pulsaModal.addEventListener('click', (e) => {
-            if (e.target === pulsaModal) {
-                pulsaModal.style.display = 'none';
-            }
-        });
-        
-        // Numeric keypad for amount
         document.querySelectorAll('#homePage .key[data-value]').forEach(key => {
             key.addEventListener('click', () => {
                 const value = key.getAttribute('data-value');
-                
-                if (currentAmount === '0') {
-                    currentAmount = value;
-                } else {
-                    currentAmount += value;
-                }
-                
+                currentAmount = (currentAmount === '0') ? value : currentAmount + value;
                 updateAmountDisplay();
             });
         });
         
-        // Numeric keypad for phone
         document.querySelectorAll('#pulsaPage .key[data-value]').forEach(key => {
             key.addEventListener('click', () => {
                 const value = key.getAttribute('data-value');
-                
-                if (currentPhone === '0') {
-                    currentPhone = value;
-                } else {
-                    currentPhone += value;
-                }
-                
+                currentPhone = (currentPhone === '0') ? value : currentPhone + value;
                 updatePhoneDisplay();
             });
         });
         
-        // Backspace button for amount
         backspaceBtn.addEventListener('click', () => {
-            if (currentAmount.length > 1) {
-                currentAmount = currentAmount.slice(0, -1);
-            } else {
-                currentAmount = '0';
-            }
-            
+            currentAmount = (currentAmount.length > 1) ? currentAmount.slice(0, -1) : '0';
             updateAmountDisplay();
         });
         
-        // Backspace button for phone
         pulsaBackspaceBtn.addEventListener('click', () => {
-            if (currentPhone.length > 1) {
-                currentPhone = currentPhone.slice(0, -1);
-            } else {
-                currentPhone = '0';
-            }
-            
+            currentPhone = (currentPhone.length > 1) ? currentPhone.slice(0, -1) : '0';
             updatePhoneDisplay();
         });
         
-        // Clear button for amount
         clearButton.addEventListener('click', () => {
             currentAmount = '0';
             updateAmountDisplay();
         });
         
-        // Clear button for phone
         clearPhoneButton.addEventListener('click', () => {
             currentPhone = '0';
             updatePhoneDisplay();
         });
         
-        // Save phone button
         savePhoneButton.addEventListener('click', () => {
             if (currentPhone === '0' || currentPhone.length < 10) {
                 alert('Harap masukkan nomor handphone yang valid!');
@@ -2437,15 +1717,11 @@
             phoneName.value = '';
             pulsaModal.style.display = 'flex';
             
-            // Reset pulsa options
-            pulsaOptions.forEach(option => {
-                option.classList.remove('active');
-            });
+            pulsaOptions.forEach(option => option.classList.remove('active'));
             customAmountGroup.style.display = 'none';
             selectedPulsaAmount = 0;
         });
         
-        // Pulsa options
         pulsaOptions.forEach(option => {
             option.addEventListener('click', () => {
                 pulsaOptions.forEach(opt => opt.classList.remove('active'));
@@ -2454,20 +1730,12 @@
                 const amount = option.getAttribute('data-amount');
                 selectedPulsaAmount = parseInt(amount);
                 
-                if (amount === '0') {
-                    customAmountGroup.style.display = 'block';
-                } else {
-                    customAmountGroup.style.display = 'none';
-                }
+                customAmountGroup.style.display = (amount === '0') ? 'block' : 'none';
             });
         });
         
-        // Custom amount input
-        customAmount.addEventListener('input', () => {
-            selectedPulsaAmount = parseInt(customAmount.value) || 0;
-        });
+        customAmount.addEventListener('input', () => { selectedPulsaAmount = parseInt(customAmount.value) || 0; });
         
-        // Confirm pulsa button
         confirmPulsaButton.addEventListener('click', () => {
             if (selectedPulsaAmount <= 0) {
                 alert('Harap pilih nominal pulsa!');
@@ -2475,33 +1743,20 @@
             }
             
             const name = phoneName.value.trim() || 'Tidak ada nama';
-            
-            // Save to phone history
             const existingIndex = phoneHistoryData.findIndex(item => item.phone === selectedPhoneNumber);
             
-            if (existingIndex >= 0) {
-                phoneHistoryData[existingIndex].name = name;
-            } else {
-                phoneHistoryData.push({
-                    phone: selectedPhoneNumber,
-                    name: name
-                });
-            }
+            if (existingIndex >= 0) phoneHistoryData[existingIndex].name = name;
+            else phoneHistoryData.push({ phone: selectedPhoneNumber, name: name });
             
             localStorage.setItem('phoneHistory', JSON.stringify(phoneHistoryData));
             
-            // Add transaction (simulate success after 5 seconds)
+            const now = new Date();
             const newTransaction = {
                 id: generateTransactionId(),
                 amount: selectedPulsaAmount,
-                date: new Date().toLocaleDateString('id-ID', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                }),
-                status: 'pending',
+                date: now.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+                rawDate: now.toISOString(),
+                status: 'success', // Auto confirm for pulsa
                 type: 'pulsa',
                 phone: selectedPhoneNumber
             };
@@ -2510,25 +1765,14 @@
             localStorage.setItem('transactions', JSON.stringify(transactions));
             
             pulsaModal.style.display = 'none';
-            
-            // Simulate confirmation after 5 seconds
-            setTimeout(() => {
-                const transactionIndex = transactions.findIndex(t => t.id === newTransaction.id);
-                if (transactionIndex >= 0) {
-                    transactions[transactionIndex].status = 'confirmed';
-                    localStorage.setItem('transactions', JSON.stringify(transactions));
-                    
-                    // If we're on the finance page, update it
-                    if (document.getElementById('financePage').classList.contains('active')) {
-                        renderTransactions();
-                    }
-                }
-            }, 5000);
+            alert('Pembelian pulsa berhasil!');
             
             renderPhoneHistory();
+            if (document.getElementById('financePage').classList.contains('active')) {
+                renderTransactions();
+            }
         });
         
-        // Add debt button
         addDebtButton.addEventListener('click', () => {
             const name = debtName.value.trim();
             const phone = debtPhone.value.trim();
@@ -2540,30 +1784,18 @@
                 return;
             }
             
-            const newDebt = {
-                id: Date.now().toString(),
-                name,
-                phone,
-                item: itemName,
-                amount,
-                status: 'pending',
-                date: new Date().toLocaleDateString('id-ID')
-            };
-            
-            debts.push(newDebt);
+            debts.push({
+                id: Date.now().toString(), name, phone, item: itemName, amount,
+                status: 'pending', date: new Date().toLocaleDateString('id-ID')
+            });
             localStorage.setItem('debts', JSON.stringify(debts));
             
-            // Clear form
-            debtName.value = '';
-            debtPhone.value = '';
-            debtItem.value = '';
-            debtAmount.value = '';
+            debtName.value = ''; debtPhone.value = ''; debtItem.value = ''; debtAmount.value = '';
             
             renderDebts();
             updateDebtNameList();
         });
         
-        // Save edited debt
         saveEditDebtButton.addEventListener('click', () => {
             const name = editDebtName.value.trim();
             const phone = editDebtPhone.value.trim();
@@ -2577,22 +1809,17 @@
             
             const debtIndex = debts.findIndex(d => d.id === currentDebtId);
             if (debtIndex >= 0) {
-                debts[debtIndex].name = name;
-                debts[debtIndex].phone = phone;
-                debts[debtIndex].item = itemName;
-                debts[debtIndex].amount = amount;
-                
+                debts[debtIndex] = {...debts[debtIndex], name, phone, item: itemName, amount};
                 localStorage.setItem('debts', JSON.stringify(debts));
                 renderDebts();
                 updateDebtNameList();
-                
                 debtEditModal.style.display = 'none';
             }
         });
         
-        // Add item button
         addItemButton.addEventListener('click', () => {
             const name = itemName.value.trim();
+            const price = parseFloat(itemPrice.value) || 0;
             const category = itemCategory.value;
             const stock = parseInt(itemStock.value) || 0;
             const minStock = parseInt(itemMinStock.value) || 0;
@@ -2602,30 +1829,19 @@
                 return;
             }
             
-            const newItem = {
-                id: Date.now().toString(),
-                name,
-                category,
-                stock,
-                minStock
-            };
-            
-            inventory.push(newItem);
+            inventory.push({ id: Date.now().toString(), name, price, category, stock, minStock });
             localStorage.setItem('inventory', JSON.stringify(inventory));
             
-            // Clear form
-            itemName.value = '';
-            itemCategory.value = 'makanan';
-            itemStock.value = '';
-            itemMinStock.value = '';
+            itemName.value = ''; itemPrice.value = ''; itemCategory.value = 'makanan';
+            itemStock.value = ''; itemMinStock.value = '';
             
             renderInventory();
             renderShoppingList();
         });
         
-        // Save edited item
         saveEditItemButton.addEventListener('click', () => {
             const name = editItemName.value.trim();
+            const price = parseFloat(editItemPrice.value) || 0;
             const category = editItemCategory.value;
             const stock = parseInt(editItemStock.value) || 0;
             const minStock = parseInt(editItemMinStock.value) || 0;
@@ -2637,20 +1853,14 @@
             
             const itemIndex = inventory.findIndex(i => i.id === currentItemId);
             if (itemIndex >= 0) {
-                inventory[itemIndex].name = name;
-                inventory[itemIndex].category = category;
-                inventory[itemIndex].stock = stock;
-                inventory[itemIndex].minStock = minStock;
-                
+                inventory[itemIndex] = { ...inventory[itemIndex], name, price, category, stock, minStock };
                 localStorage.setItem('inventory', JSON.stringify(inventory));
                 renderInventory();
                 renderShoppingList();
-                
                 inventoryEditModal.style.display = 'none';
             }
         });
         
-        // Convert button - FIXED API QRIS
         convertButton.addEventListener('click', async () => {
             if (currentAmount === '0') {
                 alert('Harap masukkan nominal terlebih dahulu!');
@@ -2660,66 +1870,41 @@
             loading.style.display = 'block';
             
             try {
-                // Use the saved QRIS static code
                 const qrisData = savedQrisStaticCode;
-                
                 if (!qrisData) {
-                    alert('Harap masukkan Kode QRIS statis di pengaturan terlebih dahulu!');
+                    alert('Harap masukkan Kode QRIS statis di pengaturan dahulu!');
                     loading.style.display = 'none';
                     return;
                 }
                 
-                // Encode QRIS data for URL
                 const encodedQris = encodeURIComponent(qrisData);
-                
-                // Make API request to API 2
                 const response = await fetch(`https://cekid-ariepulsa.my.id/api/?qris_data=${encodedQris}&nominal=${currentAmount}`);
                 const data = await response.json();
                 
                 if (data.status === 'success') {
-                    // Show payment modal with QR code
                     paymentAmount.textContent = `Rp ${formatNumber(currentAmount)}`;
                     paymentQr.src = data.link_qris;
                     paymentMerchant.textContent = savedMerchant;
                     currentQrUrl = data.link_qris;
                     
-                    // Update transaction details
                     updateTime();
-                    transactionId.textContent = generateTransactionId();
-                    
-                    // Add to transactions
+                    const newId = generateTransactionId();
+                    transactionId.textContent = newId;
+                    currentTransactionIdForConfirmation = newId;
+
+                    const now = new Date();
                     const newTransaction = {
-                        id: transactionId.textContent,
+                        id: newId,
                         amount: parseInt(currentAmount),
-                        date: new Date().toLocaleDateString('id-ID', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        }),
+                        date: now.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+                        rawDate: now.toISOString(),
                         status: 'pending',
                         type: 'qris'
                     };
                     
                     transactions.push(newTransaction);
                     localStorage.setItem('transactions', JSON.stringify(transactions));
-                    
                     paymentModal.style.display = 'flex';
-                    
-                    // Simulate confirmation after 5 seconds
-                    setTimeout(() => {
-                        const transactionIndex = transactions.findIndex(t => t.id === newTransaction.id);
-                        if (transactionIndex >= 0) {
-                            transactions[transactionIndex].status = 'confirmed';
-                            localStorage.setItem('transactions', JSON.stringify(transactions));
-                            
-                            // If we're on the finance page, update it
-                            if (document.getElementById('financePage').classList.contains('active')) {
-                                renderTransactions();
-                            }
-                        }
-                    }, 5000);
                 } else {
                     alert('API mengembalikan status error: ' + (data.message || 'Unknown error'));
                 }
@@ -2729,89 +1914,71 @@
                 loading.style.display = 'none';
             }
         });
-        
-        // Close payment modal
-        closePayment.addEventListener('click', () => {
-            paymentModal.style.display = 'none';
-            // Refresh transaction list when closing payment modal
-            if (document.getElementById('financePage').classList.contains('active')) {
-                renderTransactions();
-            }
+
+        confirmPayment.addEventListener('click', () => {
+             if (currentTransactionIdForConfirmation) {
+                const transactionIndex = transactions.findIndex(t => t.id === currentTransactionIdForConfirmation);
+                if (transactionIndex >= 0) {
+                    transactions[transactionIndex].status = 'success';
+                    localStorage.setItem('transactions', JSON.stringify(transactions));
+                    alert(`Transaksi ${currentTransactionIdForConfirmation} dikonfirmasi berhasil!`);
+                    
+                    paymentModal.style.display = 'none';
+                    currentTransactionIdForConfirmation = null;
+
+                    if (document.getElementById('financePage').classList.contains('active')) {
+                        renderTransactions();
+                    }
+                }
+             }
         });
         
-        // QRIS upload handling
-        qrisDropArea.addEventListener('click', () => {
-            qrisInput.click();
-        });
+        closePayment.addEventListener('click', () => { paymentModal.style.display = 'none'; });
+        
+        qrisDropArea.addEventListener('click', () => qrisInput.click());
         
         qrisInput.addEventListener('change', (e) => {
             if (e.target.files.length) {
-                const file = e.target.files[0];
                 const reader = new FileReader();
-                
                 reader.onload = function(event) {
                     savedQrisImage = event.target.result;
                     localStorage.setItem('qrisImage', savedQrisImage);
-                    
-                    // Show preview
                     qrisPreview.style.display = 'block';
                     qrisPreviewImg.src = savedQrisImage;
-                    
-                    // Update QR code display if on that page
                     if (document.getElementById('qrcodePage').classList.contains('active')) {
                         updateQrCodeDisplay();
                     }
                 };
-                
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(e.target.files[0]);
             }
         });
         
-        // Reset QRIS image
         resetQrisButton.addEventListener('click', () => {
             if (confirm('Apakah Anda yakin ingin menghapus gambar QRIS?')) {
                 savedQrisImage = '';
                 localStorage.removeItem('qrisImage');
                 qrisPreview.style.display = 'none';
-                
                 if (document.getElementById('qrcodePage').classList.contains('active')) {
                     updateQrCodeDisplay();
                 }
             }
         });
         
-        // Change password
         changePasswordButton.addEventListener('click', () => {
             const current = currentPassword.value;
             const newPass = newPassword.value;
             const confirmPass = confirmPassword.value;
             
-            if (current !== appPassword) {
-                alert('Sandi saat ini tidak benar!');
-                return;
-            }
-            
-            if (newPass.length !== 6) {
-                alert('Sandi baru harus 6 digit!');
-                return;
-            }
-            
-            if (newPass !== confirmPass) {
-                alert('Konfirmasi sandi tidak sesuai!');
-                return;
-            }
+            if (current !== appPassword) return alert('Sandi saat ini tidak benar!');
+            if (newPass.length !== 6) return alert('Sandi baru harus 6 digit!');
+            if (newPass !== confirmPass) return alert('Konfirmasi sandi tidak sesuai!');
             
             appPassword = newPass;
             localStorage.setItem('appPassword', appPassword);
-            
             alert('Sandi berhasil diubah!');
-            
-            currentPassword.value = '';
-            newPassword.value = '';
-            confirmPassword.value = '';
+            currentPassword.value = ''; newPassword.value = ''; confirmPassword.value = '';
         });
         
-        // Save settings
         saveButton.addEventListener('click', () => {
             const merchant = merchantName.value.trim();
             const headerTitleText = headerTitleInput.value.trim();
@@ -2819,29 +1986,8 @@
             const footerTextContent = footerTextInput.value.trim();
             const qrisCode = qrisStaticCode.value.trim();
             
-            if (!merchant) {
-                alert('Harap masukkan nama merchant!');
-                return;
-            }
-            
-            if (!headerTitleText) {
-                alert('Harap masukkan judul halaman!');
-                return;
-            }
-            
-            if (!headerSubtitleText) {
-                alert('Harap masukkan subjudul halaman!');
-                return;
-            }
-            
-            if (!footerTextContent) {
-                alert('Harap masukkan teks footer!');
-                return;
-            }
-            
-            if (!qrisCode) {
-                alert('Harap masukkan Kode QRIS statis!');
-                return;
+            if (!merchant || !headerTitleText || !headerSubtitleText || !footerTextContent || !qrisCode) {
+                return alert('Harap isi semua field!');
             }
             
             savedMerchant = merchant;
@@ -2856,7 +2002,6 @@
             localStorage.setItem('footerText', footerTextContent);
             localStorage.setItem('qrisStaticCode', qrisCode);
             
-            // Update UI with new values
             paymentMerchant.textContent = merchant;
             headerTitle.textContent = headerTitleText;
             headerSubtitle.textContent = headerSubtitleText;
@@ -2866,29 +2011,113 @@
             settingsModal.style.display = 'none';
         });
         
-        // Helper functions
-        function updateAmountDisplay() {
-            // Format the amount with thousand separators
-            const formattedAmount = formatNumber(currentAmount);
-            amountDisplay.textContent = `Rp ${formattedAmount}`;
-        }
+        // Inventory Data Management
+        downloadCsvButton.addEventListener('click', () => {
+            if (inventory.length === 0) return alert("Inventori kosong.");
+            
+            const headers = "ID,Nama Barang,Harga,Kategori,Stok,Stok Minimum";
+            const csvContent = inventory.map(item => 
+                [item.id, `"${item.name}"`, item.price, item.category, item.stock, item.minStock].join(',')
+            ).join('\n');
+            
+            const blob = new Blob([headers + '\n' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "inventory.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
         
-        function updatePhoneDisplay() {
-            phoneDisplay.textContent = currentPhone;
-        }
+        backupButton.addEventListener('click', () => {
+            const dataStr = JSON.stringify(inventory, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'inventory-backup.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
         
-        function formatNumber(num) {
-            return parseInt(num).toLocaleString('id-ID');
-        }
+        restoreInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const data = JSON.parse(event.target.result);
+                    if (Array.isArray(data)) {
+                        inventory = data;
+                        localStorage.setItem('inventory', JSON.stringify(inventory));
+                        renderInventory();
+                        renderShoppingList();
+                        alert('Data inventori berhasil dipulihkan!');
+                    } else {
+                        alert('Format file tidak valid.');
+                    }
+                } catch (error) {
+                    alert('Terjadi kesalahan saat membaca file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = ''; // Reset input
+        });
         
+        importCsvInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const csvText = event.target.result;
+                    const lines = csvText.split('\n');
+                    const headers = lines[0].split(',');
+                    
+                    // Skip header row and process data
+                    for (let i = 1; i < lines.length; i++) {
+                        if (lines[i].trim() === '') continue;
+                        
+                        const values = lines[i].split(',');
+                        if (values.length >= 6) {
+                            const item = {
+                                id: values[0].replace(/"/g, ''),
+                                name: values[1].replace(/"/g, ''),
+                                price: parseFloat(values[2]) || 0,
+                                category: values[3],
+                                stock: parseInt(values[4]) || 0,
+                                minStock: parseInt(values[5]) || 0
+                            };
+                            
+                            // Check if item already exists
+                            const existingIndex = inventory.findIndex(i => i.id === item.id);
+                            if (existingIndex >= 0) {
+                                inventory[existingIndex] = item;
+                            } else {
+                                inventory.push(item);
+                            }
+                        }
+                    }
+                    
+                    localStorage.setItem('inventory', JSON.stringify(inventory));
+                    renderInventory();
+                    renderShoppingList();
+                    alert('Data CSV berhasil diimpor!');
+                } catch (error) {
+                    alert('Terjadi kesalahan saat membaca file CSV: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = ''; // Reset input
+        });
+
         // Initialize the app
         initializeApp();
-        
-        // Initialize amount display and time
-        updateAmountDisplay();
-        updatePhoneDisplay();
-        updateTime();
-        setInterval(updateTime, 60000); // Update time every minute
     </script>
 </body>
 </html>
