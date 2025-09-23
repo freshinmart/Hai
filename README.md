@@ -23,6 +23,7 @@
         html, body {
             height: 100%;
             overflow: hidden;
+            margin: 0;
         }
 
         body {
@@ -35,14 +36,16 @@
         .container {
             max-width: 500px;
             margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             padding: 15px;
-            height: 100%;
+            padding-bottom: 80px; /* Adjusted for bottom-nav height */
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 120px;
         }
 
-        /* Header Responsif */
+        /* Header */
         header {
             text-align: center;
             margin-bottom: 20px;
@@ -51,7 +54,7 @@
             color: white;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            position: relative;
+            flex-shrink: 0;
         }
 
         header h1 {
@@ -87,7 +90,7 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Input Section Responsif */
+        /* Input Section */
         .input-section {
             margin-bottom: 15px;
             background-color: #fff;
@@ -95,6 +98,10 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
             border: 1px solid #ddd;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent internal scrolling */
         }
 
         .input-section h3 {
@@ -102,6 +109,7 @@
             color: #333;
             font-size: 1.1rem;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .amount-display, .phone-display {
@@ -119,13 +127,23 @@
             align-items: center;
             justify-content: center;
             word-break: break-all;
+            flex-shrink: 0;
+        }
+
+        /* Numeric Keypad */
+        .numeric-keypad-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         .numeric-keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            margin-bottom: 15px;
+            flex: 1;
+            min-height: 0; /* Allow it to fit within container */
         }
 
         .key {
@@ -159,6 +177,8 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 10px;
+            margin-top: 15px;
+            flex-shrink: 0;
         }
 
         .convert-button, .clear-button, .save-button, .confirm-payment {
@@ -201,7 +221,7 @@
             background-color: #e0e0e0;
         }
 
-        /* Modal Responsif */
+        /* Modal */
         .settings-modal, .payment-modal, .pulsa-modal, .password-modal, .debt-edit-modal, .inventory-edit-modal {
             display: none;
             position: fixed;
@@ -238,7 +258,7 @@
             max-width: 100%;
         }
 
-        /* Bottom Navigation Responsif */
+        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -276,10 +296,10 @@
             margin-bottom: 4px;
         }
 
-        /* Inventory Button Responsif */
+        /* Inventory Button */
         .inventory-btn {
             position: fixed;
-            bottom: 70px;
+            bottom: 80px; /* Adjusted to sit above bottom-nav */
             right: 15px;
             width: 50px;
             height: 50px;
@@ -302,7 +322,7 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* Form Elements Responsif */
+        /* Form Elements */
         .form-group {
             margin-bottom: 12px;
         }
@@ -325,7 +345,7 @@
             box-sizing: border-box;
         }
 
-        /* Transaction, Debt, Inventory Items Responsif */
+        /* Transaction, Debt, Inventory Items */
         .transaction-item, .debt-item, .inventory-item {
             background-color: white;
             padding: 12px;
@@ -339,7 +359,7 @@
             font-size: 1.1rem;
         }
 
-        /* Management Buttons Responsif */
+        /* Management Buttons */
         .management-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -361,125 +381,103 @@
             font-size: 0.85rem;
         }
 
-        /* Media Queries untuk layar sangat kecil */
+        /* Media Queries */
         @media (max-width: 360px) {
             .container {
                 padding: 10px;
-                padding-bottom: 110px;
+                padding-bottom: 70px;
             }
-            
             header {
                 padding: 12px;
             }
-            
             header h1 {
                 font-size: 1.3rem;
             }
-            
             .amount-display, .phone-display {
                 font-size: 1.5rem;
                 min-height: 60px;
                 padding: 10px;
             }
-            
             .key {
                 padding: 14px 6px;
                 font-size: 1.2rem;
                 min-height: 48px;
             }
-            
             .numeric-keypad {
                 gap: 6px;
             }
-            
             .input-section {
                 padding: 12px;
             }
-            
             .input-section h3 {
                 font-size: 1rem;
             }
-            
             .nav-btn {
                 font-size: 0.7rem;
             }
-            
             .nav-btn i {
                 font-size: 1rem;
             }
-            
             .inventory-btn {
-                bottom: 65px;
+                bottom: 75px;
                 right: 10px;
                 width: 45px;
                 height: 45px;
                 font-size: 1.2rem;
             }
-            
-            .transaction-item, .debt-item, .inventory-item {
-                padding: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px; /* Slightly wider for tablets */
+                padding: 20px;
+            }
+            .numeric-keypad {
+                gap: 10px;
+            }
+            .key {
+                font-size: 1.4rem;
+                min-height: 60px;
+            }
+            .input-section {
+                padding: 20px;
             }
         }
 
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 800px; /* Wider for desktops */
+                padding: 30px;
+            }
+            .numeric-keypad {
+                gap: 12px;
+            }
+            .key {
+                font-size: 1.5rem;
+                min-height: 70px;
+            }
+            .input-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Landscape Orientation */
         @media (max-width: 768px) and (orientation: landscape) {
             .container {
-                padding-bottom: 100px;
+                padding-bottom: 70px;
             }
-            
             .bottom-nav {
                 padding: 5px 0;
             }
-            
             .nav-btn {
                 padding: 3px;
             }
-            
             .nav-btn i {
                 margin-bottom: 2px;
             }
         }
 
-        /* Perbaikan untuk elemen yang mungkin terpotong */
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Pastikan konten dalam modal tidak melebihi layar */
-        .tab-content {
-            max-height: 50vh;
-            overflow-y: auto;
-        }
-
-        /* Loading spinner responsif */
-        .loading-spinner {
-            width: 30px;
-            height: 30px;
-            border-width: 3px;
-        }
-
-        /* QR Code display responsif */
-        .qrcode-display img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* History items responsif */
-        .history-item {
-            padding: 12px;
-            font-size: 0.9rem;
-        }
-
-        /* Hilangkan efek hover pada perangkat touch */
+        /* Prevent hover effects on touch devices */
         @media (hover: none) {
             .key:hover, .convert-button:hover, .clear-button:hover, 
             .save-button:hover, .confirm-payment:hover, .profile-btn:hover,
@@ -487,7 +485,6 @@
                 transform: none;
                 background-color: initial;
             }
-            
             .key:active, .convert-button:active, .clear-button:active, 
             .save-button:active, .confirm-payment:active, .profile-btn:active,
             .nav-btn:active, .inventory-btn:active {
@@ -496,14 +493,62 @@
             }
         }
 
-        /* Pastikan teks tidak melebihi container */
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* Page Styling */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* QR Code display */
+        .qrcode-display img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* History items */
+        .history-item {
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        /* Text overflow handling */
         .transaction-id, .debt-name, .inventory-name {
             word-break: break-word;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* Perbaikan untuk form yang panjang */
+        /* Form styling */
         .debt-form, .inventory-form {
             padding: 15px;
         }
@@ -514,6 +559,7 @@
             padding: 15px;
             color: #666;
             font-size: 0.8rem;
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -530,19 +576,21 @@
                 <h3>Tambah nominal</h3>
                 <div class="amount-display" id="amountDisplay">0</div>
                 
-                <div class="numeric-keypad">
-                    <button class="key" data-value="1">1</button>
-                    <button class="key" data-value="2">2</button>
-                    <button class="key" data-value="3">3</button>
-                    <button class="key" data-value="4">4</button>
-                    <button class="key" data-value="5">5</button>
-                    <button class="key" data-value="6">6</button>
-                    <button class="key" data-value="7">7</button>
-                    <button class="key" data-value="8">8</button>
-                    <button class="key" data-value="9">9</button>
-                    <button class="key" data-value="000">000</button>
-                    <button class="key" data-value="0">0</button>
-                    <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
+                <div class="numeric-keypad-container">
+                    <div class="numeric-keypad">
+                        <button class="key" data-value="1">1</button>
+                        <button class="key" data-value="2">2</button>
+                        <button class="key" data-value="3">3</button>
+                        <button class="key" data-value="4">4</button>
+                        <button class="key" data-value="5">5</button>
+                        <button class="key" data-value="6">6</button>
+                        <button class="key" data-value="7">7</button>
+                        <button class="key" data-value="8">8</button>
+                        <button class="key" data-value="9">9</button>
+                        <button class="key" data-value="000">000</button>
+                        <button class="key" data-value="0">0</button>
+                        <button class="key" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
+                    </div>
                 </div>
                 
                 <div class="action-buttons">
@@ -550,7 +598,7 @@
                     <button class="clear-button" id="clearButton">Clear</button>
                 </div>
                 
-                <div class="loading" id="loading">
+                <div class="loading" id="loading" style="display: none;">
                     <div class="loading-spinner"></div>
                     <p>Sedang memproses...</p>
                 </div>
@@ -639,19 +687,21 @@
                 <h3>Masukkan nomor handphone</h3>
                 <div class="phone-display" id="phoneDisplay">0</div>
                 
-                <div class="numeric-keypad">
-                    <button class="key" data-value="1">1</button>
-                    <button class="key" data-value="2">2</button>
-                    <button class="key" data-value="3">3</button>
-                    <button class="key" data-value="4">4</button>
-                    <button class="key" data-value="5">5</button>
-                    <button class="key" data-value="6">6</button>
-                    <button class="key" data-value="7">7</button>
-                    <button class="key" data-value="8">8</button>
-                    <button class="key" data-value="9">9</button>
-                    <button class="key" data-value="+62">+62</button>
-                    <button class="key" data-value="0">0</button>
-                    <button class="key" id="pulsaBackspaceBtn"><i class="fas fa-backspace"></i></button>
+                <div class="numeric-keypad-container">
+                    <div class="numeric-keypad">
+                        <button class="key" data-value="1">1</button>
+                        <button class="key" data-value="2">2</button>
+                        <button class="key" data-value="3">3</button>
+                        <button class="key" data-value="4">4</button>
+                        <button class="key" data-value="5">5</button>
+                        <button class="key" data-value="6">6</button>
+                        <button class="key" data-value="7">7</button>
+                        <button class="key" data-value="8">8</button>
+                        <button class="key" data-value="9">9</button>
+                        <button class="key" data-value="+62">+62</button>
+                        <button class="key" data-value="0">0</button>
+                        <button class="key" id="pulsaBackspaceBtn"><i class="fas fa-backspace"></i></button>
+                    </div>
                 </div>
                 
                 <div class="action-buttons">
@@ -745,6 +795,7 @@
         <i class="fas fa-box"></i>
     </button>
 
+    <!-- Modal dan elemen lainnya tetap sama -->
     <div class="password-modal" id="passwordModal">
         <div class="password-content">
             <h2>Masukkan Sandi</h2>
@@ -1524,7 +1575,7 @@
                 });
                 
                 // POS Sell button
-                 inventoryItem.querySelector('.sell-item').addEventListener('click', (e) => {
+                inventoryItem.querySelector('.sell-item').addEventListener('click', (e) => {
                     e.stopPropagation();
                     const itemId = e.target.getAttribute('data-id');
                     const itemIndex = inventory.findIndex(i => i.id === itemId);
