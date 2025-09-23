@@ -10,7 +10,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -24,105 +24,130 @@
             height: 100%;
             overflow: hidden;
             margin: 0;
+            background-color: #f8fafc;
         }
 
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
+            color: #1e293b;
+            line-height: 1.5;
             position: relative;
         }
 
         .container {
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 15px;
-            padding-bottom: 80px; /* Adjusted for bottom-nav height */
+            padding: 16px;
+            padding-bottom: 72px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         /* Header */
         header {
             text-align: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: linear-gradient(135deg, #333, #555);
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
+            position: relative;
         }
 
         header h1 {
-            margin-bottom: 8px;
             font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
 
         header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.875rem;
+            opacity: 0.85;
+            font-weight: 400;
         }
 
         .profile-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.15);
             border: none;
-            color: white;
-            font-size: 1.3rem;
+            color: #ffffff;
+            font-size: 1.25rem;
             cursor: pointer;
-            transition: transform 0.2s;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
-        .profile-btn:hover {
-            transform: scale(1.1);
-            background-color: rgba(255, 255, 255, 0.1);
+        .fullscreen-btn {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #ffffff;
+            font-size: 1.25rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .profile-btn:hover, .fullscreen-btn:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
         }
 
         /* Input Section */
         .input-section {
-            margin-bottom: 15px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-            border: 1px solid #ddd;
+            margin-bottom: 16px;
+            background-color: #ffffff;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
             flex: 1;
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Prevent internal scrolling */
+            overflow: hidden;
         }
 
         .input-section h3 {
             margin-bottom: 12px;
-            color: #333;
-            font-size: 1.1rem;
+            color: #1e293b;
+            font-size: 1rem;
+            font-weight: 500;
             text-align: center;
             flex-shrink: 0;
         }
 
         .amount-display, .phone-display {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
             padding: 12px;
-            background-color: #f8f9fc;
+            background-color: #f1f5f9;
             border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            font-weight: bold;
-            color: #333;
-            min-height: 70px;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -135,7 +160,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Prevent scrolling */
+            overflow: hidden;
         }
 
         .numeric-keypad {
@@ -143,82 +168,156 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
             flex: 1;
-            min-height: 0; /* Allow it to fit within container */
+            min-height: 0;
         }
 
         .key {
-            padding: 16px 8px;
-            background-color: #fff;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            padding: 12px;
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
-            font-size: 1.3rem;
-            font-weight: bold;
+            font-size: 1.25rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
-            min-height: 54px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            min-height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .key:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
 
         .key:active {
             transform: translateY(0);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
         .action-buttons {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 12px;
             flex-shrink: 0;
         }
 
         .convert-button, .clear-button, .save-button, .confirm-payment {
-            padding: 14px;
+            padding: 10px;
             border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9375rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             width: 100%;
         }
 
         .convert-button, .save-button {
-            background-color: #333;
-            color: white;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #ffffff;
         }
 
         .confirm-payment {
-            background-color: #2e7d32;
-            color: white;
-            margin-top: 10px;
+            background: linear-gradient(135deg, #15803d, #22c55e);
+            color: #ffffff;
+            margin-top: 8px;
         }
 
         .clear-button {
-            background-color: #f8f9fc;
-            color: #333;
-            border: 1px solid #e0e0e0;
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
         }
 
         .convert-button:hover, .save-button:hover {
-            background-color: #555;
+            background: linear-gradient(135deg, #1e40af, #60a5fa);
+            transform: translateY(-1px);
         }
 
         .confirm-payment:hover {
-            background-color: #388e3c;
+            background: linear-gradient(135deg, #16a34a, #4ade80);
+            transform: translateY(-1px);
         }
 
         .clear-button:hover {
-            background-color: #e0e0e0;
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+            z-index: 999;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none;
+            border: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            flex: 1;
+            padding: 8px;
+        }
+
+        .nav-btn.active {
+            color: #1e3a8a;
+        }
+
+        .nav-btn i {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-btn:hover {
+            color: #1e3a8a;
+            transform: translateY(-1px);
+        }
+
+        /* Inventory Button (FAB) */
+        .inventory-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 16px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .inventory-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         /* Modal */
@@ -229,97 +328,53 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            box-sizing: border-box;
+            padding: 16px;
+            animation: fadeIn 0.3s ease;
         }
 
         .settings-content, .payment-content, .pulsa-content, .password-content, .debt-edit-content, .inventory-edit-content {
-            background-color: white;
+            background: #ffffff;
             padding: 20px;
             border-radius: 12px;
             width: 100%;
             max-width: 400px;
-            max-height: 85vh;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.3s ease;
         }
 
         .payment-content {
-            max-width: 350px;
+            max-width: 360px;
         }
 
         .payment-qr img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .nav-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
             background: none;
             border: none;
-            font-size: 0.75rem;
-            color: #666;
+            color: #64748b;
+            font-size: 1.25rem;
             cursor: pointer;
-            transition: color 0.3s;
-            flex: 1;
-            padding: 5px;
+            transition: color 0.2s ease;
         }
 
-        .nav-btn.active {
-            color: #333;
-        }
-
-        .nav-btn i {
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
-        /* Inventory Button */
-        .inventory-btn {
-            position: fixed;
-            bottom: 80px; /* Adjusted to sit above bottom-nav */
-            right: 15px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #333, #555);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 998;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .inventory-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        .close-btn:hover {
+            color: #1e293b;
         }
 
         /* Form Elements */
@@ -329,34 +384,42 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-            font-size: 0.9rem;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #1e293b;
+            font-size: 0.875rem;
         }
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #d5d9e4;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            box-sizing: border-box;
+            font-size: 0.9375rem;
+            color: #1e293b;
+            background-color: #f8fafc;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            outline: none;
         }
 
         /* Transaction, Debt, Inventory Items */
         .transaction-item, .debt-item, .inventory-item {
-            background-color: white;
+            background: #ffffff;
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
 
         .transaction-amount, .debt-amount, .inventory-stock {
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         /* Management Buttons */
@@ -368,148 +431,32 @@
         }
 
         .management-buttons button, .management-buttons label {
-            width: 100%;
             padding: 10px;
             border-radius: 8px;
-            border: 1px solid #333;
-            background-color: #fff;
-            color: #333;
-            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 0.875rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
             text-align: center;
-            font-size: 0.85rem;
         }
 
-        /* Media Queries */
-        @media (max-width: 360px) {
-            .container {
-                padding: 10px;
-                padding-bottom: 70px;
-            }
-            header {
-                padding: 12px;
-            }
-            header h1 {
-                font-size: 1.3rem;
-            }
-            .amount-display, .phone-display {
-                font-size: 1.5rem;
-                min-height: 60px;
-                padding: 10px;
-            }
-            .key {
-                padding: 14px 6px;
-                font-size: 1.2rem;
-                min-height: 48px;
-            }
-            .numeric-keypad {
-                gap: 6px;
-            }
-            .input-section {
-                padding: 12px;
-            }
-            .input-section h3 {
-                font-size: 1rem;
-            }
-            .nav-btn {
-                font-size: 0.7rem;
-            }
-            .nav-btn i {
-                font-size: 1rem;
-            }
-            .inventory-btn {
-                bottom: 75px;
-                right: 10px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
+        .management-buttons button:hover, .management-buttons label:hover {
+            background: #f1f5f9;
+            transform: translateY(-1px);
         }
 
-        @media (min-width: 768px) {
-            .container {
-                max-width: 600px; /* Slightly wider for tablets */
-                padding: 20px;
-            }
-            .numeric-keypad {
-                gap: 10px;
-            }
-            .key {
-                font-size: 1.4rem;
-                min-height: 60px;
-            }
-            .input-section {
-                padding: 20px;
-            }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 800px; /* Wider for desktops */
-                padding: 30px;
-            }
-            .numeric-keypad {
-                gap: 12px;
-            }
-            .key {
-                font-size: 1.5rem;
-                min-height: 70px;
-            }
-            .input-section h3 {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* Landscape Orientation */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .container {
-                padding-bottom: 70px;
-            }
-            .bottom-nav {
-                padding: 5px 0;
-            }
-            .nav-btn {
-                padding: 3px;
-            }
-            .nav-btn i {
-                margin-bottom: 2px;
-            }
-        }
-
-        /* Prevent hover effects on touch devices */
-        @media (hover: none) {
-            .key:hover, .convert-button:hover, .clear-button:hover, 
-            .save-button:hover, .confirm-payment:hover, .profile-btn:hover,
-            .nav-btn:hover, .inventory-btn:hover {
-                transform: none;
-                background-color: initial;
-            }
-            .key:active, .convert-button:active, .clear-button:active, 
-            .save-button:active, .confirm-payment:active, .profile-btn:active,
-            .nav-btn:active, .inventory-btn:active {
-                transform: scale(0.98);
-                opacity: 0.8;
-            }
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Page Styling */
@@ -524,42 +471,185 @@
             display: flex;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* QR Code display */
+        /* QR Code Display */
         .qrcode-display img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
-        /* History items */
+        /* History Items */
         .history-item {
             padding: 12px;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+            background: #ffffff;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Text overflow handling */
+        /* Text Overflow Handling */
         .transaction-id, .debt-name, .inventory-name {
             word-break: break-word;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* Form styling */
+        /* Form Styling */
         .debt-form, .inventory-form {
-            padding: 15px;
+            padding: 12px;
         }
 
         footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            color: #666;
-            font-size: 0.8rem;
+            margin-top: 24px;
+            padding: 12px;
+            color: #64748b;
+            font-size: 0.75rem;
             flex-shrink: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 360px) {
+            .container {
+                padding: 12px;
+                padding-bottom: 64px;
+            }
+            header {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.25rem;
+            }
+            .amount-display, .phone-display {
+                font-size: 1.5rem;
+                min-height: 56px;
+                padding: 10px;
+            }
+            .key {
+                padding: 10px;
+                font-size: 1.125rem;
+                min-height: 44px;
+            }
+            .numeric-keypad {
+                gap: 6px;
+            }
+            .input-section {
+                padding: 12px;
+            }
+            .input-section h3 {
+                font-size: 0.9375rem;
+            }
+            .nav-btn {
+                font-size: 0.6875rem;
+            }
+            .nav-btn i {
+                font-size: 1.125rem;
+            }
+            .inventory-btn {
+                bottom: 72px;
+                right: 12px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.125rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 640px;
+                padding: 24px;
+            }
+            .numeric-keypad {
+                gap: 10px;
+            }
+            .key {
+                font-size: 1.375rem;
+                min-height: 56px;
+            }
+            .input-section {
+                padding: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 800px;
+                padding: 32px;
+            }
+            .numeric-keypad {
+                gap: 12px;
+            }
+            .key {
+                font-size: 1.5rem;
+                min-height: 64px;
+            }
+            .input-section h3 {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Landscape Orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                padding-bottom: 64px;
+            }
+            .bottom-nav {
+                padding: 6px 0;
+            }
+            .nav-btn {
+                padding: 6px;
+            }
+            .nav-btn i {
+                margin-bottom: 2px;
+            }
+        }
+
+        /* Prevent hover effects on touch devices */
+        @media (hover: none) {
+            .key:hover, .convert-button:hover, .clear-button:hover, 
+            .save-button:hover, .confirm-payment:hover, .profile-btn:hover,
+            .nav-btn:hover, .inventory-btn:hover, .fullscreen-btn:hover {
+                transform: none;
+                background: initial;
+            }
+            .key:active, .convert-button:active, .clear-button:active, 
+            .save-button:active, .confirm-payment:active, .profile-btn:active,
+            .nav-btn:active, .inventory-btn:active, .fullscreen-btn:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Fullscreen styles */
+        body:fullscreen {
+            background-color: #f8fafc;
+        }
+        
+        body:fullscreen .container {
+            max-width: 100%;
+            border-radius: 0;
+            box-shadow: none;
         }
     </style>
 </head>
@@ -567,13 +657,14 @@
     <div class="container">
         <div class="page active" id="homePage">
             <header>
+                <button class="fullscreen-btn" id="fullscreenBtn"><i class="fas fa-expand"></i></button>
                 <h1 id="headerTitle">QRISku</h1>
                 <p id="headerSubtitle">Pembayaran QRIS Mudah dan Cepat</p>
                 <button class="profile-btn" id="profileBtn"><i class="fas fa-user"></i></button>
             </header>
 
             <div class="input-section">
-                <h3>Tambah nominal</h3>
+                <h3>Tambah Nominal</h3>
                 <div class="amount-display" id="amountDisplay">0</div>
                 
                 <div class="numeric-keypad-container">
@@ -609,8 +700,10 @@
             </footer>
         </div>
 
+        <!-- Finance Page -->
         <div class="page" id="financePage">
             <header>
+                <button class="fullscreen-btn"><i class="fas fa-expand"></i></button>
                 <h1>Keuangan</h1>
                 <p>Kelola transaksi dan hutang piutang</p>
                 <button class="profile-btn" id="financeProfileBtn"><i class="fas fa-user"></i></button>
@@ -622,8 +715,7 @@
             </div>
 
             <div id="transactions-tab" class="tab-content active">
-                <div class="transaction-list" id="transactionList">
-                </div>
+                <div class="transaction-list" id="transactionList"></div>
             </div>
 
             <div id="debts-tab" class="tab-content">
@@ -632,8 +724,7 @@
                     <div class="form-group">
                         <label for="debtName">Nama</label>
                         <input type="text" id="debtName" placeholder="Nama orang yang berhutang" list="debtNameList">
-                        <datalist id="debtNameList">
-                        </datalist>
+                        <datalist id="debtNameList"></datalist>
                     </div>
                     <div class="form-group">
                         <label for="debtPhone">Nomor Telepon</label>
@@ -660,10 +751,12 @@
             </footer>
         </div>
 
+        <!-- QR Code Page -->
         <div class="page" id="qrcodePage">
             <header>
-                <h1>Kode QRIS</h1>
-                <p>Scan kode QRIS untuk pembayaran</p>
+                <button class="fullscreen-btn"><i class="fas fa-expand"></i></button>
+                <h1>QRIS</h1>
+                <p></p>
                 <button class="profile-btn" id="qrcodeProfileBtn"><i class="fas fa-user"></i></button>
             </header>
 
@@ -676,8 +769,10 @@
             </footer>
         </div>
 
+        <!-- Pulsa Page -->
         <div class="page" id="pulsaPage">
             <header>
+                <button class="fullscreen-btn"><i class="fas fa-expand"></i></button>
                 <h1>Isi Pulsa</h1>
                 <p>Isi pulsa handphone dengan mudah</p>
                 <button class="profile-btn" id="pulsaProfileBtn"><i class="fas fa-user"></i></button>
@@ -719,8 +814,10 @@
             </footer>
         </div>
 
+        <!-- Inventory Page -->
         <div class="page" id="inventoryPage">
             <header>
+                <button class="fullscreen-btn"><i class="fas fa-expand"></i></button>
                 <h1>Manajemen Inventori</h1>
                 <p>Kelola stok barang dan daftar belanja</p>
                 <button class="profile-btn" id="inventoryProfileBtn"><i class="fas fa-user"></i></button>
@@ -758,16 +855,16 @@
             </div>
             
             <div class="inventory-management">
-                 <h3>Manajemen Data Inventori</h3>
-                 <div class="management-buttons">
+                <h3>Manajemen Data Inventori</h3>
+                <div class="management-buttons">
                     <button id="downloadCsvButton">Download CSV</button>
                     <button id="backupButton">Backup JSON</button>
                     <label for="restoreInput">Restore JSON</label>
                     <input type="file" id="restoreInput" accept=".json" style="display:none;">
                     <label for="importCsvInput">Import CSV</label>
                     <input type="file" id="importCsvInput" accept=".csv" style="display:none;">
-                 </div>
-                 <p style="font-size: 0.8rem; text-align:center; color: #666;">Gunakan file .csv atau .json untuk menambah atau memulihkan data.</p>
+                </div>
+                <p style="font-size: 0.75rem; text-align:center; color: #64748b;">Gunakan file .csv atau .json untuk menambah atau memulihkan data.</p>
             </div>
 
             <div class="inventory-list" id="inventoryList">
@@ -795,12 +892,12 @@
         <i class="fas fa-box"></i>
     </button>
 
-    <!-- Modal dan elemen lainnya tetap sama -->
+    <!-- Modals -->
     <div class="password-modal" id="passwordModal">
         <div class="password-content">
             <h2>Masukkan Sandi</h2>
             <input type="password" class="password-input" id="passwordInput" maxlength="6" placeholder="Masukkan 6 digit sandi">
-            <div class="password-error" id="passwordError">Sandi salah! Coba lagi.</div>
+            <div class="password-error" id="passwordError" style="display: none; color: #dc2626;">Sandi salah! Coba lagi.</div>
             <button class="save-button" id="submitPassword">Submit</button>
             <button class="close-btn" id="closePassword"><i class="fas fa-times"></i></button>
         </div>
@@ -834,7 +931,7 @@
                     <input type="file" id="qrisInput" accept="image/*" style="display: none;">
                 </div>
                 
-                <div class="qris-preview" id="qrisPreview">
+                <div class="qris-preview" id="qrisPreview" style="display: none;">
                     <p>Preview QRIS:</p>
                     <img id="qrisPreviewImg" src="" alt="QRIS Preview">
                 </div>
@@ -910,7 +1007,7 @@
             </div>
             
             <button class="confirm-payment" id="confirmPayment">Konfirmasi Pembayaran</button>
-            <button class="close-payment" id="closePayment">Tutup</button>
+            <button class="clear-button" id="closePayment">Tutup</button>
         </div>
     </div>
 
@@ -1123,6 +1220,10 @@
         const restoreInput = document.getElementById('restoreInput');
         const importCsvInput = document.getElementById('importCsvInput');
         
+        // Fullscreen button
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const fullscreenBtns = document.querySelectorAll('.fullscreen-btn');
+        
         // State
         let currentAmount = '0';
         let currentPhone = '0';
@@ -1158,6 +1259,28 @@
             phoneDisplay.textContent = currentPhone;
         }
         
+        // Fullscreen functionality
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+        
+        // Update fullscreen button icon based on fullscreen state
+        document.addEventListener('fullscreenchange', () => {
+            const iconClass = document.fullscreenElement ? 'fa-compress' : 'fa-expand';
+            fullscreenBtns.forEach(btn => {
+                const icon = btn.querySelector('i');
+                icon.className = `fas ${iconClass}`;
+            });
+        });
+        
         // Initialize
         function initializeApp() {
             merchantName.value = savedMerchant;
@@ -1178,7 +1301,6 @@
             renderInventory();
             renderShoppingList();
             
-            // Show QRIS image preview if exists
             if (savedQrisImage) {
                 qrisPreview.style.display = 'block';
                 qrisPreviewImg.src = savedQrisImage;
@@ -1228,7 +1350,6 @@
                 }
             });
 
-             // Update specific page content if needed
              if (pageId === 'financePage') {
                  renderTransactions();
                  renderDebts();
@@ -1275,7 +1396,7 @@
             phoneHistory.innerHTML = '<h3>Riwayat Nomor</h3>';
             
             if (phoneHistoryData.length === 0) {
-                phoneHistory.innerHTML += '<p style="text-align: center; color: #666; padding: 10px;">Belum ada riwayat nomor handphone</p>';
+                phoneHistory.innerHTML += '<p style="text-align: center; color: #64748b; padding: 10px;">Belum ada riwayat nomor handphone</p>';
                 return;
             }
             
@@ -1305,7 +1426,7 @@
             const confirmedTransactions = transactions.filter(t => t.status === 'success').sort((a, b) => new Date(b.rawDate) - new Date(a.rawDate));
             
             if (confirmedTransactions.length === 0) {
-                transactionList.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Belum ada transaksi</p>';
+                transactionList.innerHTML = '<p style="text-align: center; color: #64748b; padding: 20px;">Belum ada transaksi</p>';
                 return;
             }
             
@@ -1333,7 +1454,7 @@
             debtList.innerHTML = '<h3>Daftar Hutang</h3>';
             
             if (debts.length === 0) {
-                debtList.innerHTML += '<p style="text-align: center; color: #666; padding: 20px;">Belum ada catatan hutang</p>';
+                debtList.innerHTML += '<p style="text-align: center; color: #64748b; padding: 20px;">Belum ada catatan hutang</p>';
                 return;
             }
             
@@ -1450,15 +1571,15 @@
                 qrcodeDisplay.innerHTML = `
                     <h3>${savedMerchant}</h3>
                     <p> </p>
-                    <img src="${savedQrisImage}" alt="QRIS Code" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
-                    <p>Scan Kode QRIS di atas untuk pembayaran</p>
+                    <img src="${savedQrisImage}" alt="QRIS Code" style="max-width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px;">
+                    <p> </p>
                 `;
             } else {
                 qrcodeDisplay.innerHTML = `
                     <h3>${savedMerchant}</h3>
                     <p> </p>
-                    <div style="background-color: #f0f0f0; padding: 20px; display: inline-block; margin: 15px 0;">
-                        <i class="fas fa-qrcode" style="font-size: 150px; color: #333;"></i>
+                    <div style="background-color: #f1f5f9; padding: 20px; display: inline-block; margin: 15px 0;">
+                        <i class="fas fa-qrcode" style="font-size: 120px; color: #1e293b;"></i>
                     </div>
                     <p>Upload gambar QRIS melalui pengaturan</p>
                 `;
@@ -1470,7 +1591,7 @@
             inventoryList.innerHTML = '<h3>Daftar Inventori</h3>';
             
             if (inventory.length === 0) {
-                inventoryList.innerHTML += '<p style="text-align: center; color: #666; padding: 20px;">Belum ada data inventori</p>';
+                inventoryList.innerHTML += '<p style="text-align: center; color: #64748b; padding: 20px;">Belum ada data inventori</p>';
                 return;
             }
             
@@ -1628,7 +1749,7 @@
             const lowStockItems = inventory.filter(item => item.stock <= item.minStock);
             
             if (lowStockItems.length === 0) {
-                shoppingList.innerHTML = '<h3 style="margin-top:20px;">Daftar Belanja</h3><p style="text-align: center; color: #666; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
+                shoppingList.innerHTML = '<h3 style="margin-top:20px;">Daftar Belanja</h3><p style="text-align: center; color: #64748b; padding: 20px;">Tidak ada barang yang perlu dibeli</p>';
                 return;
             }
             
@@ -1676,6 +1797,11 @@
                 passwordError.style.display = 'none';
                 passwordInput.focus();
             });
+        });
+
+        // Fullscreen button event listeners
+        fullscreenBtns.forEach(btn => {
+            btn.addEventListener('click', toggleFullscreen);
         });
 
         closePassword.addEventListener('click', () => { passwordModal.style.display = 'none'; });
